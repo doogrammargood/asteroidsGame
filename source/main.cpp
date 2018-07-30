@@ -83,9 +83,9 @@ int main(void)
     glfwGetFramebufferSize(window, &width, &height);
     glViewport(0, 0, width, height);
     
-    //!!!!!!!!Pick a projection that makes the most sense to you
-    ship.set_extents(width, height);
-    mat4 proj = Ortho2D(-width/2, width/2, height/2, -height/2);
+    //Pick a coordinate system that makes the most sense to you
+    //(left, right, top, bottom)
+    mat4 proj = Ortho2D(-1.0, 1.0, 1.0, -1.0);
     
     animate();
     

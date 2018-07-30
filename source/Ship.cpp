@@ -9,33 +9,20 @@
 #include "common.h"
 
 Ship::Ship(){
-  //!!!!!!!!Your initial state might be different depending on how you
-  //pick your world coordinates
-  state.cur_location = vec2(0.0,0.0);
-  state.pointing = vec2(0.0,-1.0);
-  state.move = vec2(0.0,0.0);
-  state.thruster_on = false;
-  state.angle = 0.0;
+  //Set up initial state here
 };
 
 
 void Ship::update_state(){
-  if(state.thruster_on){
-    //!!!!!!!!Accelerate if the thruster is on
-    //!!!!!!!!Clamp acceleration at some maximum value
-  }
+  // Things to do:
+  // Accelerate in direction that the ship is pointing if thruster is on
   
-  //!!!!!!!!Dampen the velocity at every timestep to lessen intertia
-  //!!!!!!!!Move the ship location
-  
-  //Wrap the ship position when at the boundary
-  //!!!!!!!!This will change depending on the world coordinates you are using
-  if(state.cur_location.x < -width || state.cur_location.x > width){
-    state.cur_location.x = -state.cur_location.x;
-  }
-  if(state.cur_location.y < -height ||state.cur_location.y > height){
-    state.cur_location.y = -state.cur_location.y;
-  }
+  // velocity = dt*acceleration
+  // clamp velocity at a maximum value
+  // Dampen the velocity at every timestep to lessen intertia
+
+  // position = dt*velocity
+  // Wrap the ship position when at the boundary
 
 }
 
@@ -105,13 +92,13 @@ void Ship::draw(mat4 proj){
   glUseProgram( GLvars.program );
   glBindVertexArray( GLvars.vao );
   
-  //!!!!!!!!Create a modelview matrix and pass it
+  //If you have a modelview matrix, pass it with proj
   glUniformMatrix4fv( GLvars.M_location, 1, GL_TRUE, proj );
   
-  //!!!!!!!!Draw something
+  //Draw something
   
   if(state.thruster_on){
-    //!!!!!!!!Maybe draw something different if the thruster is on
+    //Maybe draw something different if the thruster is on
   }
   
   glBindVertexArray(0);
