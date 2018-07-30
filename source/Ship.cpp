@@ -8,25 +8,28 @@
 
 #include "common.h"
 
+//Ship constructor
 Ship::Ship(){
   //Set up initial state here
 };
 
-
+//Called everytime an animation tick happens
 void Ship::update_state(){
   // Things to do:
-  // Accelerate in direction that the ship is pointing if thruster is on
+  //a = F
+  //Force is in the direction the ship is pointing
+  //Clamp acceleration at some maximum value
   
-  // velocity = dt*acceleration
+  //v  = old_velocity + a*dt
   // clamp velocity at a maximum value
   // Dampen the velocity at every timestep to lessen intertia
 
-  // position = dt*velocity
+  //p  = old_position + v*dt
   // Wrap the ship position when at the boundary
 
 }
 
-
+//Initialize the gl state and variables
 void Ship::gl_init(){
   //Ship
   //!!!!!!!!Populate ship_vert and ship_color
@@ -87,6 +90,7 @@ void Ship::gl_init(){
 
 }
 
+//Draw a ship
 void Ship::draw(mat4 proj){
   
   glUseProgram( GLvars.program );

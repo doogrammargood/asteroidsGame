@@ -39,6 +39,7 @@ void init(){
   
 }
 
+//Call update function 30 times a second
 void animate(){
   if(glfwGetTime() > 0.033){
     glfwSetTime(0.0);
