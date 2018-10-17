@@ -37,11 +37,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="index.html"><span>Introduction</span></a></li>
+      <li class="current"><a href="pages.html"><span>Guides</span></a></li>
+      <li><a href="modules.html"><span>Reference</span></a></li>
+      <li><a href="files.html"><span>Header&#160;Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -140,11 +139,11 @@ Creating the window</h1>
 <h1><a class="anchor" id="vulkan_surface"></a>
 Creating a Vulkan window surface</h1>
 <p>You can create a Vulkan surface (as defined by the <code>VK_KHR_surface</code> extension) for a GLFW window with <a class="el" href="group__vulkan.html#ga1a24536bec3f80b08ead18e28e6ae965">glfwCreateWindowSurface</a>.</p>
-<div class="fragment"><div class="line">VkSurfaceKHR surface;</div><div class="line">VkResult err = <a class="code" href="group__vulkan.html#ga1a24536bec3f80b08ead18e28e6ae965">glfwCreateWindowSurface</a>(instance, window, NULL, &amp;surface);</div><div class="line"><span class="keywordflow">if</span> (err)</div><div class="line">{</div><div class="line">    <span class="comment">// Window surface creation failed</span></div><div class="line">}</div></div><!-- fragment --><p>It is your responsibility to destroy the surface. GLFW does not destroy it for you. Call <code>vkDestroySurfaceKHR</code> function from the same extension to destroy it. </p>
+<div class="fragment"><div class="line"><a class="code" href="internal_8h.html#a09787d7da5f3146095ed80ceccc2d794">VkSurfaceKHR</a> surface;</div><div class="line"><a class="code" href="internal_8h.html#abe3614d1bd40772bc2398a4a86ea4a45">VkResult</a> err = <a class="code" href="group__vulkan.html#ga1a24536bec3f80b08ead18e28e6ae965">glfwCreateWindowSurface</a>(instance, window, NULL, &amp;surface);</div><div class="line"><span class="keywordflow">if</span> (err)</div><div class="line">{</div><div class="line">    <span class="comment">// Window surface creation failed</span></div><div class="line">}</div></div><!-- fragment --><p>It is your responsibility to destroy the surface. GLFW does not destroy it for you. Call <code>vkDestroySurfaceKHR</code> function from the same extension to destroy it. </p>
 </div></div><!-- contents -->
 <address class="footer">
 <p>
-Last update on Thu Jun 2 2016 for GLFW 3.2.0
+Last update on Wed Oct 17 2018 for GLFW 3.2.0
 </p>
 </address>
 </body>

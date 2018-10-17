@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['pixels',['pixels',['../structGLFWimage.html#a0c532a5c2bb715555279b7817daba0fb',1,'GLFWimage']]]
+  ['joystick',['joystick',['../struct__GLFWlibrary.html#a60d552e59e41b4500e3d36acd35131da',1,'_GLFWlibrary']]],
+  ['joysticks',['Joysticks',['../group__joysticks.html',1,'']]]
 ];

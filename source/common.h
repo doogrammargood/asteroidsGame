@@ -17,12 +17,13 @@
 #include <list>
 #include <vector>
 #include "utils/Angel.h"
-
 using namespace Angel;
 
 #include "shader.h"
 #include "Ship.h"
-
+#include "Asteroid.h"
+#include "Bullet.h"
+#include "utils/geometryhelpers.h"
 
 
 #endif

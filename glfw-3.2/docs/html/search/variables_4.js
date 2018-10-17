@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['red',['red',['../structGLFWgammaramp.html#a2cce5d968734b685623eef913e635138',1,'GLFWgammaramp']]],
-  ['redbits',['redBits',['../structGLFWvidmode.html#a6066c4ecd251098700062d3b735dba1b',1,'GLFWvidmode']]],
-  ['refreshrate',['refreshRate',['../structGLFWvidmode.html#a791bdd6c7697b09f7e9c97054bf05649',1,'GLFWvidmode']]]
+  ['debug',['debug',['../struct__GLFWctxconfig.html#a694b0434791f532ddf39bca57b94042e',1,'_GLFWctxconfig::debug()'],['../struct__GLFWcontext.html#a4644cc146abe50cffba0b2a2cded0842',1,'_GLFWcontext::debug()']]],
+  ['decorated',['decorated',['../struct__GLFWwndconfig.html#a02d04b1fd5957f637c572719ffbfb322',1,'_GLFWwndconfig::decorated()'],['../struct__GLFWwindow.html#a7bbf2c1c619769193e345392cd384b2d',1,'_GLFWwindow::decorated()']]],
+  ['denom',['denom',['../struct__GLFWwindow.html#a7edbe4dd0a73b92a1d704288372cbf41',1,'_GLFWwindow']]],
+  ['depthbits',['depthBits',['../struct__GLFWfbconfig.html#a0e7baeca6ea2e4146236f38bc1df870f',1,'_GLFWfbconfig']]],
+  ['destroy',['destroy',['../struct__GLFWcontext.html#aaece52646c2833dde715076997d342ef',1,'_GLFWcontext']]],
+  ['doublebuffer',['doublebuffer',['../struct__GLFWfbconfig.html#afd48b37171d567f9893bd8a660c4621b',1,'_GLFWfbconfig']]],
+  ['drop',['drop',['../struct__GLFWwindow.html#a9554c2ace458a11ebe588f92cc8ee9bb',1,'_GLFWwindow']]]
 ];

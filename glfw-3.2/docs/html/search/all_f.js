@@ -1,7 +1,14 @@
 var searchData=
 [
-  ['width',['width',['../structGLFWvidmode.html#a698dcb200562051a7249cb6ae154c71d',1,'GLFWvidmode::width()'],['../structGLFWimage.html#af6a71cc999fe6d3aea31dd7e9687d835',1,'GLFWimage::width()']]],
-  ['window_20reference',['Window reference',['../group__window.html',1,'']]],
-  ['window_2edox',['window.dox',['../window_8dox.html',1,'']]],
-  ['window_20guide',['Window guide',['../window_guide.html',1,'']]]
+  ['pfn_5fvkenumerateinstanceextensionproperties',['PFN_vkEnumerateInstanceExtensionProperties',['../internal_8h.html#ab22f7f5030f939e5fbf5564db51eb197',1,'internal.h']]],
+  ['pfn_5fvkgetinstanceprocaddr',['PFN_vkGetInstanceProcAddr',['../internal_8h.html#afdd5e96faf709042a34a7bb0024e47d9',1,'internal.h']]],
+  ['pfn_5fvkvoidfunction',['PFN_vkVoidFunction',['../internal_8h.html#a4b1d506ea7691641c382d5e2d89c1580',1,'internal.h']]],
+  ['pfnglclearproc',['PFNGLCLEARPROC',['../internal_8h.html#a379d0db4d383d63ca1a9a02e7d12c738',1,'internal.h']]],
+  ['pfnglgetintegervproc',['PFNGLGETINTEGERVPROC',['../internal_8h.html#aafb938760bcb4e65139f5e1ae463d6de',1,'internal.h']]],
+  ['pfnglgetstringiproc',['PFNGLGETSTRINGIPROC',['../internal_8h.html#af8d1810133c7892ee891e98749e5526b',1,'internal.h']]],
+  ['pfnglgetstringproc',['PFNGLGETSTRINGPROC',['../internal_8h.html#a540e27eb668c77ed193e5346d93cfd06',1,'internal.h']]],
+  ['pixels',['pixels',['../structGLFWimage.html#a0c532a5c2bb715555279b7817daba0fb',1,'GLFWimage']]],
+  ['platform_20interface',['Platform interface',['../group__platform.html',1,'']]],
+  ['pos',['pos',['../struct__GLFWwindow.html#ab773ca3f2aa0141466ff5364dd9f127b',1,'_GLFWwindow']]],
+  ['profile',['profile',['../struct__GLFWctxconfig.html#a0c56aeafa0f85b1b0ba3e9371a737770',1,'_GLFWctxconfig::profile()'],['../struct__GLFWcontext.html#a99aa07a2c46fc33cb20c1a894a0d4d48',1,'_GLFWcontext::profile()']]]
 ];

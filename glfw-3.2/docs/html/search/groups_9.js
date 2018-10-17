@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window_20reference',['Window reference',['../group__window.html',1,'']]]
+  ['utility_20functions',['Utility functions',['../group__utility.html',1,'']]]
 ];

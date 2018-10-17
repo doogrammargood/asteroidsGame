@@ -1,0 +1,12 @@
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/rebuild_cache.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/edit_cache.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/glad.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/asteroids.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/CMakeFiles/edit_cache.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/CMakeFiles/rebuild_cache.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/src/CMakeFiles/edit_cache.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/src/CMakeFiles/glfw.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/src/CMakeFiles/rebuild_cache.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/docs/CMakeFiles/edit_cache.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/docs/CMakeFiles/docs.dir
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/docs/CMakeFiles/rebuild_cache.dir

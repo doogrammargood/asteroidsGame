@@ -37,11 +37,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="index.html"><span>Introduction</span></a></li>
+      <li><a href="pages.html"><span>Guides</span></a></li>
+      <li><a href="modules.html"><span>Reference</span></a></li>
+      <li class="current"><a href="files.html"><span>Header&#160;Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -82,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_08e1ee7155ac1a76a73ffceb6b657a29.html">glfw-3.2</a></li><li class="navelem"><a class="el" href="dir_fd444fb52240f758d2b0089d593c476c.html">include</a></li><li class="navelem"><a class="el" href="dir_9c3c2e26a0aa651fadfacf63cc938980.html">GLFW</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_7d046523570a4bf058ddf3b10b545b6c.html">GLFW</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -980,13 +979,13 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1abcbe61033958f22f63ef82008874b1"><td class="memItemLeft" align="right" valign="top">const char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vulkan.html#ga1abcbe61033958f22f63ef82008874b1">glfwGetRequiredInstanceExtensions</a> (uint32_t *count)</td></tr>
 <tr class="memdesc:ga1abcbe61033958f22f63ef82008874b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Vulkan instance extensions required by GLFW.  <a href="group__vulkan.html#ga1abcbe61033958f22f63ef82008874b1">More...</a><br /></td></tr>
 <tr class="separator:ga1abcbe61033958f22f63ef82008874b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadf228fac94c5fd8f12423ec9af9ff1e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__vulkan.html#ga70c01918dc9d233a4fbe0681a43018af">GLFWvkproc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vulkan.html#gadf228fac94c5fd8f12423ec9af9ff1e9">glfwGetInstanceProcAddress</a> (VkInstance instance, const char *procname)</td></tr>
+<tr class="memitem:gadf228fac94c5fd8f12423ec9af9ff1e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__vulkan.html#ga70c01918dc9d233a4fbe0681a43018af">GLFWvkproc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vulkan.html#gadf228fac94c5fd8f12423ec9af9ff1e9">glfwGetInstanceProcAddress</a> (<a class="el" href="internal_8h.html#a25ae5082a7c01af345570ed09d724881">VkInstance</a> instance, const char *procname)</td></tr>
 <tr class="memdesc:gadf228fac94c5fd8f12423ec9af9ff1e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the address of the specified Vulkan instance function.  <a href="group__vulkan.html#gadf228fac94c5fd8f12423ec9af9ff1e9">More...</a><br /></td></tr>
 <tr class="separator:gadf228fac94c5fd8f12423ec9af9ff1e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaff3823355cdd7e2f3f9f4d9ea9518d92"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vulkan.html#gaff3823355cdd7e2f3f9f4d9ea9518d92">glfwGetPhysicalDevicePresentationSupport</a> (VkInstance instance, VkPhysicalDevice device, uint32_t queuefamily)</td></tr>
+<tr class="memitem:gaff3823355cdd7e2f3f9f4d9ea9518d92"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vulkan.html#gaff3823355cdd7e2f3f9f4d9ea9518d92">glfwGetPhysicalDevicePresentationSupport</a> (<a class="el" href="internal_8h.html#a25ae5082a7c01af345570ed09d724881">VkInstance</a> instance, <a class="el" href="internal_8h.html#aa9acbee1e762fde021511a1b47678a38">VkPhysicalDevice</a> device, uint32_t queuefamily)</td></tr>
 <tr class="memdesc:gaff3823355cdd7e2f3f9f4d9ea9518d92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the specified queue family can present images.  <a href="group__vulkan.html#gaff3823355cdd7e2f3f9f4d9ea9518d92">More...</a><br /></td></tr>
 <tr class="separator:gaff3823355cdd7e2f3f9f4d9ea9518d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1a24536bec3f80b08ead18e28e6ae965"><td class="memItemLeft" align="right" valign="top">VkResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vulkan.html#ga1a24536bec3f80b08ead18e28e6ae965">glfwCreateWindowSurface</a> (VkInstance instance, <a class="el" href="group__window.html#ga3c96d80d363e67d13a41b5d1821f3242">GLFWwindow</a> *window, const VkAllocationCallbacks *allocator, VkSurfaceKHR *surface)</td></tr>
+<tr class="memitem:ga1a24536bec3f80b08ead18e28e6ae965"><td class="memItemLeft" align="right" valign="top"><a class="el" href="internal_8h.html#abe3614d1bd40772bc2398a4a86ea4a45">VkResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__vulkan.html#ga1a24536bec3f80b08ead18e28e6ae965">glfwCreateWindowSurface</a> (<a class="el" href="internal_8h.html#a25ae5082a7c01af345570ed09d724881">VkInstance</a> instance, <a class="el" href="group__window.html#ga3c96d80d363e67d13a41b5d1821f3242">GLFWwindow</a> *window, const <a class="el" href="internal_8h.html#ad81262c34caa3ad7db4411d07f298b1d">VkAllocationCallbacks</a> *allocator, <a class="el" href="internal_8h.html#a09787d7da5f3146095ed80ceccc2d794">VkSurfaceKHR</a> *surface)</td></tr>
 <tr class="memdesc:ga1a24536bec3f80b08ead18e28e6ae965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Vulkan surface for the specified window.  <a href="group__vulkan.html#ga1a24536bec3f80b08ead18e28e6ae965">More...</a><br /></td></tr>
 <tr class="separator:ga1a24536bec3f80b08ead18e28e6ae965"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -1750,7 +1749,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <address class="footer">
 <p>
-Last update on Thu Jun 2 2016 for GLFW 3.2.0
+Last update on Wed Oct 17 2018 for GLFW 3.2.0
 </p>
 </address>
 </body>

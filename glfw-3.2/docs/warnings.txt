@@ -1,0 +1,14 @@
+warning: source /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/examples is not a readable file or directory... skipping.
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/docs/quick.dox:340: warning: included file simple.c is not found. Check your EXAMPLE_PATH
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/docs/quick.dox:340: warning: block marked with [code] for \snippet should appear twice in file simple.c, found it 0 times
+
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/src/internal.h:774: warning: The following parameters of _glfwPlatformCreateCursor(_GLFWcursor *cursor, const GLFWimage *image, int xhot, int yhot) are not documented:
+  parameter 'cursor'
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/src/internal.h:779: warning: The following parameters of _glfwPlatformCreateStandardCursor(_GLFWcursor *cursor, int shape) are not documented:
+  parameter 'cursor'
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/src/internal.h:576: warning: The following parameters of _glfwPlatformGetGammaRamp(_GLFWmonitor *monitor, GLFWgammaramp *ramp) are not documented:
+  parameter 'ramp'
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/src/internal.h:537: warning: The following parameters of _glfwPlatformSetCursorMode(_GLFWwindow *window, int mode) are not documented:
+  parameter 'mode'
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/glfw-3.2/src/internal.h:895: warning: The following parameters of _glfwInputMouseClick(_GLFWwindow *window, int button, int action, int mods) are not documented:
+  parameter 'mods'

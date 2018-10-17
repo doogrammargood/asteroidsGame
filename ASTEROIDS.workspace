@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeLite_Workspace Name="ASTEROIDS">
+  <Project Name="ASTEROIDS" Path="ASTEROIDS.project" Active="Yes"/>
+  <Project Name="GLFW" Path="glfw-3.2/GLFW.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Project Name="ASTEROIDS" ConfigName="Release"/>
+      <Project Name="GLFW" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

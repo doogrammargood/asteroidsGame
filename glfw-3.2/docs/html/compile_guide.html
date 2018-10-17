@@ -37,11 +37,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="index.html"><span>Introduction</span></a></li>
+      <li class="current"><a href="pages.html"><span>Guides</span></a></li>
+      <li><a href="modules.html"><span>Reference</span></a></li>
+      <li><a href="files.html"><span>Header&#160;Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -174,7 +173,7 @@ Windows specific CMake options</h3>
 <h1><a class="anchor" id="compile_manual"></a>
 Compiling GLFW manually</h1>
 <p>If you wish to compile GLFW without its CMake build environment then you will have to do at least some of the platform detection yourself. GLFW needs a configuration macro to be defined in order to know what window system it's being compiled for and also has optional, platform-specific ones for various features.</p>
-<p>When building with CMake, the <code>glfw_config.h</code> configuration header is generated based on the current platform and CMake options. The GLFW CMake environment defines <code>_GLFW_USE_CONFIG_H</code>, which causes this header to be included by <code>internal.h</code>. Without this macro, GLFW will expect the necessary configuration macros to be defined on the command-line.</p>
+<p>When building with CMake, the <code>glfw_config.h</code> configuration header is generated based on the current platform and CMake options. The GLFW CMake environment defines <code>_GLFW_USE_CONFIG_H</code>, which causes this header to be included by <code><a class="el" href="internal_8h.html">internal.h</a></code>. Without this macro, GLFW will expect the necessary configuration macros to be defined on the command-line.</p>
 <p>The window creation API is used to create windows, handle input, monitors, gamma ramps and clipboard. The options are:</p>
 <ul>
 <li><code>_GLFW_COCOA</code> to use the Cocoa frameworks</li>
@@ -202,7 +201,7 @@ Compiling GLFW manually</h1>
 </div></div><!-- contents -->
 <address class="footer">
 <p>
-Last update on Thu Jun 2 2016 for GLFW 3.2.0
+Last update on Wed Oct 17 2018 for GLFW 3.2.0
 </p>
 </address>
 </body>

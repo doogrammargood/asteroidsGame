@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['height',['height',['../structGLFWvidmode.html#ac65942a5f6981695517437a9d571d03c',1,'GLFWvidmode::height()'],['../structGLFWimage.html#a0b7d95368f0c80d5e5c9875057c7dbec',1,'GLFWimage::height()']]]
+  ['blue',['blue',['../structGLFWgammaramp.html#acf0c836d0efe29c392fe8d1a1042744b',1,'GLFWgammaramp']]],
+  ['bluebits',['blueBits',['../structGLFWvidmode.html#af310977f58d2e3b188175b6e3d314047',1,'GLFWvidmode::blueBits()'],['../struct__GLFWfbconfig.html#aff797f80ccb99126ce88f696f745f6e5',1,'_GLFWfbconfig::blueBits()']]]
 ];
