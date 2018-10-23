@@ -19,9 +19,11 @@
     <File Name="glfw-3.2/src/xkb_unicode.c"/>
     <File Name="shaders/shader.cpp"/>
     <File Name="source/Asteroid.cpp"/>
+    <File Name="source/Background.cpp"/>
     <File Name="source/Bullet.cpp"/>
     <File Name="source/Ship.cpp"/>
     <File Name="source/main.cpp"/>
+    <File Name="source/stb/stb_image.cpp"/>
     <File Name="source/utils/geometryhelpers.cpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
@@ -39,13 +41,17 @@
     <File Name="glfw-3.2/src/xkb_unicode.h"/>
     <File Name="shaders/fshader_Asteroid.glsl"/>
     <File Name="shaders/fshader_Ship.glsl"/>
+    <File Name="shaders/ftexture_Shader.glsl"/>
     <File Name="shaders/shader.h"/>
     <File Name="shaders/vshader_Asteroid.glsl"/>
     <File Name="shaders/vshader_Ship.glsl"/>
+    <File Name="shaders/vtexture_Shader.glsl"/>
     <File Name="source/Asteroid.h"/>
+    <File Name="source/Background.h"/>
     <File Name="source/Bullet.h"/>
     <File Name="source/Ship.h"/>
     <File Name="source/common.h"/>
+    <File Name="source/stb/stb_image.h"/>
     <File Name="source/utils/Angel.h"/>
     <File Name="source/utils/CheckError.h"/>
     <File Name="source/utils/geometryhelpers.h"/>

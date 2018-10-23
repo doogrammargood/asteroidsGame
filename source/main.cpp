@@ -36,11 +36,13 @@ sf::Sound noise_collideb;
 sf::Sound noise_collidec;
 sf::Sound noise_collideea;
 sf::Sound noise_ea_chord;
+sf::Music music;
 
 static void error_callback(int error, const char* description)
 {
   fprintf(stderr, "Error: %s\n", description);
 }
+
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -88,6 +90,43 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 	  bang->gl_init();
 	  bullets.push_back(bang);
   }
+  if (key == GLFW_KEY_M && action == GLFW_PRESS){
+	  if (music.getVolume()>0)
+		music.setVolume(0);
+	  else
+		music.setVolume(90);
+	  }
+  if (key == GLFW_KEY_N && action == GLFW_PRESS){
+	  if (noise_lasers_a.getVolume()==0){
+	    noise_flippty.setVolume(100);
+		noise_lasers_a.setVolume(40);
+		noise_lasers_e.setVolume(20);
+		noise_lasers_g.setVolume(20);
+		noise_b_chr.setVolume(40);
+		noise_c_chr.setVolume(40);
+		noise_fs_chr.setVolume(40);
+		noise_thruster_sound.setVolume(70);
+		noise_collideb.setVolume(60);
+		noise_collidec.setVolume(60);
+		noise_collideea.setVolume(60);
+		noise_ea_chord.setVolume(60);
+	  }
+	  else{
+		noise_flippty.setVolume(0);
+		noise_lasers_a.setVolume(0);
+		noise_lasers_e.setVolume(0);
+		noise_lasers_g.setVolume(0);
+		noise_b_chr.setVolume(0);
+		noise_c_chr.setVolume(0);
+		noise_fs_chr.setVolume(0);
+		noise_thruster_sound.setVolume(0);
+		noise_collideb.setVolume(0);
+		noise_collidec.setVolume(0);
+		noise_collideea.setVolume(0);
+		noise_ea_chord.setVolume(0);
+		  }
+	  
+	  }
 }
 
 void init(){
@@ -96,7 +135,6 @@ void init(){
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
   ship.gl_init();
-  //asteroid.gl_init();
 }
 
 //Call update function 30 times a second
@@ -113,6 +151,12 @@ void animate(){
 	vec2 *left_laser_boundary;
 	vec2 *right_laser_boundary;
 	vec2 *asteroid_boundary;
+	vec2 *ship_boundary;
+	int numVerts;
+	if (ship.get_sheild()>0)
+		numVerts = 16;
+	else
+		numVerts = 23;
 	for (auto it = bullets.begin(); it != bullets.end();){ // check if any bullets have reach their end of life
 		//https://stackoverflow.com/questions/9927163/erase-element-in-vector-while-iterating-the-same-vector
 		if(!(*it)->update_state())
@@ -120,10 +164,11 @@ void animate(){
 		else
 		  ++it;
 	}
+	ship_boundary = ship.getBoundary();
 	for (auto it = asteroids.begin(); it != asteroids.end();){
 		remove_roid = false;
 		(*it)->update_state();
-		if (length((*it)->locate() - ship.locate())<0.15){ //Check to see if the ship hit an asteroid.
+		if (length((*it)->locate() - ship.locate())<1 and polygonsIntersect((*it)->getBoundary(),ship_boundary,13,numVerts)){ //Check to see if the ship hit an asteroid.
 			shards=(*it)->shatter(ship.velocity(), ship.get_mass());
 			ship.get_hit((*it)->get_velocity(),(*it)->get_mass());
 			remove_roid = true;
@@ -145,10 +190,7 @@ void animate(){
 				}
 			newAsteroids.push_back(std::get<0>(shards));
 			newAsteroids.push_back(std::get<1>(shards));
-			
-			
 		}
-		
 		
 		for (auto las = bullets.begin(); las != bullets.end();){ //Check to see if any bullets hit an asteroid.
 			if(length((*it)->locate() - (*las)->locate() )< 0.3){
@@ -196,6 +238,7 @@ void animate(){
 		else
 			++it;
 	}
+	delete[] ship_boundary;
 	for(auto ast = newAsteroids.begin(); ast != newAsteroids.end();){
 		if(asteroids.size()<10){
 			(*ast)->gl_init();
@@ -246,6 +289,8 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
   noise_collidec.setBuffer(collidec);
   noise_collideea.setBuffer(collideea); 
   noise_ea_chord.setBuffer(ea_chord);
+  /*
+  noise_flippty.setVolume(100);
   noise_lasers_a.setVolume(40);
   noise_lasers_e.setVolume(20);
   noise_lasers_g.setVolume(20);
@@ -257,11 +302,24 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
   noise_collidec.setVolume(60);
   noise_collideea.setVolume(60);
   noise_ea_chord.setVolume(60);
-  sf::Music music;
+   */
+  noise_flippty.setVolume(0);
+  noise_lasers_a.setVolume(0);
+  noise_lasers_e.setVolume(0);
+  noise_lasers_g.setVolume(0);
+  noise_b_chr.setVolume(0);
+  noise_c_chr.setVolume(0);
+  noise_fs_chr.setVolume(0);
+  noise_thruster_sound.setVolume(0);
+  noise_collideb.setVolume(0);
+  noise_collidec.setVolume(0);
+  noise_collideea.setVolume(0);
+  noise_ea_chord.setVolume(0);
   if (!music.openFromFile("sounds/game_music_session.ogg"))
 	std::cout<<"can't find music."<<std::endl;
 	//return -1; // error
-  music.setVolume(90);
+  //music.setVolume(90);
+  music.setVolume(0);
   music.play();
   srand (time(NULL));
   GLFWwindow* window;
@@ -289,8 +347,8 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
   glfwMakeContextCurrent(window);
   gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
   glfwSwapInterval(1);
-  
   init();
+  Background background;
   while (!glfwWindowShouldClose(window)){
 	if(rand()/(float)RAND_MAX<0.01 and asteroids.size()<5){
 		rock = new Asteroid();
@@ -309,7 +367,8 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
     animate();
     
     glClear(GL_COLOR_BUFFER_BIT);
-    
+	
+	background.draw();
 	ship.draw(proj);
 	//asteroid.draw(proj);
 	for (auto it = bullets.begin(); it != bullets.end(); ++it)

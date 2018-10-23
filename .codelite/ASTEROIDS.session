@@ -1,82 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/ASTEROIDS.workspace">
-  <int Value="4" Name="m_selectedTab"/>
+  <int Value="0" Name="m_selectedTab"/>
   <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/ASTEROIDS.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/main.cpp" Name="FileName"/>
-      <int Value="163" Name="FirstVisibleLine"/>
-      <int Value="188" Name="CurrentLine"/>
+      <int Value="239" Name="FirstVisibleLine"/>
+      <int Value="527" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
+      <IntVector Name="CollapsedFolds">
+        <IntVectorItem Value="42"/>
+        <IntVectorItem Value="46"/>
+        <IntVectorItem Value="138"/>
+        <IntVectorItem Value="232"/>
+        <IntVectorItem Value="259"/>
+      </IntVector>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.cpp" Name="FileName"/>
-      <int Value="181" Name="FirstVisibleLine"/>
-      <int Value="182" Name="CurrentLine"/>
+      <int Value="27" Name="FirstVisibleLine"/>
+      <int Value="282" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
+      <IntVector Name="CollapsedFolds">
+        <IntVectorItem Value="15"/>
+        <IntVectorItem Value="41"/>
+        <IntVectorItem Value="70"/>
+        <IntVectorItem Value="80"/>
+        <IntVectorItem Value="86"/>
+        <IntVectorItem Value="121"/>
+        <IntVectorItem Value="172"/>
+        <IntVectorItem Value="206"/>
+        <IntVectorItem Value="302"/>
+      </IntVector>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.h" Name="FileName"/>
-      <int Value="22" Name="FirstVisibleLine"/>
-      <int Value="23" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/mat.h" Name="FileName"/>
-      <int Value="766" Name="FirstVisibleLine"/>
-      <int Value="767" Name="CurrentLine"/>
+      <int Value="44" Name="FirstVisibleLine"/>
+      <int Value="80" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Asteroid.cpp" Name="FileName"/>
-      <int Value="82" Name="FirstVisibleLine"/>
-      <int Value="93" Name="CurrentLine"/>
+      <int Value="103" Name="FirstVisibleLine"/>
+      <int Value="131" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds">
+        <IntVectorItem Value="44"/>
+        <IntVectorItem Value="47"/>
+        <IntVectorItem Value="50"/>
+        <IntVectorItem Value="53"/>
+      </IntVector>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/shaders/vshader_Ship.glsl" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="15" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Asteroid.h" Name="FileName"/>
-      <int Value="45" Name="FirstVisibleLine"/>
-      <int Value="46" Name="CurrentLine"/>
+      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/shaders/vshader_Asteroid.glsl" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="10" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.h" Name="FileName"/>
-      <int Value="31" Name="FirstVisibleLine"/>
-      <int Value="32" Name="CurrentLine"/>
+      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/shaders/vtexture_Shader.glsl" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="5" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.cpp" Name="FileName"/>
-      <int Value="144" Name="FirstVisibleLine"/>
-      <int Value="145" Name="CurrentLine"/>
+      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/shaders/ftexture_Shader.glsl" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="3" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/geometryhelpers.h" Name="FileName"/>
+      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/shaders/fshader_Ship.glsl" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="3" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h" Name="FileName"/>
       <int Value="7" Name="FirstVisibleLine"/>
-      <int Value="13" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/geometryhelpers.cpp" Name="FileName"/>
-      <int Value="6" Name="FirstVisibleLine"/>
-      <int Value="18" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/Angel.h" Name="FileName"/>
-      <int Value="65" Name="FirstVisibleLine"/>
-      <int Value="67" Name="CurrentLine"/>
+      <int Value="23" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

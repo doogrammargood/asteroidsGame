@@ -243,6 +243,33 @@ source/Asteroid.cpp.s:
 	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/Asteroid.cpp.s
 .PHONY : source/Asteroid.cpp.s
 
+source/Background.o: source/Background.cpp.o
+
+.PHONY : source/Background.o
+
+# target to build an object file
+source/Background.cpp.o:
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/Background.cpp.o
+.PHONY : source/Background.cpp.o
+
+source/Background.i: source/Background.cpp.i
+
+.PHONY : source/Background.i
+
+# target to preprocess a source file
+source/Background.cpp.i:
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/Background.cpp.i
+.PHONY : source/Background.cpp.i
+
+source/Background.s: source/Background.cpp.s
+
+.PHONY : source/Background.s
+
+# target to generate assembly for a file
+source/Background.cpp.s:
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/Background.cpp.s
+.PHONY : source/Background.cpp.s
+
 source/Bullet.o: source/Bullet.cpp.o
 
 .PHONY : source/Bullet.o
@@ -324,6 +351,33 @@ source/main.cpp.s:
 	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/main.cpp.s
 .PHONY : source/main.cpp.s
 
+source/stb/stb_image.o: source/stb/stb_image.cpp.o
+
+.PHONY : source/stb/stb_image.o
+
+# target to build an object file
+source/stb/stb_image.cpp.o:
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o
+.PHONY : source/stb/stb_image.cpp.o
+
+source/stb/stb_image.i: source/stb/stb_image.cpp.i
+
+.PHONY : source/stb/stb_image.i
+
+# target to preprocess a source file
+source/stb/stb_image.cpp.i:
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.i
+.PHONY : source/stb/stb_image.cpp.i
+
+source/stb/stb_image.s: source/stb/stb_image.cpp.s
+
+.PHONY : source/stb/stb_image.s
+
+# target to generate assembly for a file
+source/stb/stb_image.cpp.s:
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.s
+.PHONY : source/stb/stb_image.cpp.s
+
 source/utils/geometryhelpers.o: source/utils/geometryhelpers.cpp.o
 
 .PHONY : source/utils/geometryhelpers.o
@@ -372,6 +426,9 @@ help:
 	@echo "... source/Asteroid.o"
 	@echo "... source/Asteroid.i"
 	@echo "... source/Asteroid.s"
+	@echo "... source/Background.o"
+	@echo "... source/Background.i"
+	@echo "... source/Background.s"
 	@echo "... source/Bullet.o"
 	@echo "... source/Bullet.i"
 	@echo "... source/Bullet.s"
@@ -381,6 +438,9 @@ help:
 	@echo "... source/main.o"
 	@echo "... source/main.i"
 	@echo "... source/main.s"
+	@echo "... source/stb/stb_image.o"
+	@echo "... source/stb/stb_image.i"
+	@echo "... source/stb/stb_image.s"
 	@echo "... source/utils/geometryhelpers.o"
 	@echo "... source/utils/geometryhelpers.i"
 	@echo "... source/utils/geometryhelpers.s"

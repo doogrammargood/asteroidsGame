@@ -6,9 +6,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/shaders/shader.cpp" "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/asteroids.dir/shaders/shader.cpp.o"
   "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Asteroid.cpp" "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/asteroids.dir/source/Asteroid.cpp.o"
+  "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.cpp" "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/asteroids.dir/source/Background.cpp.o"
   "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.cpp" "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/asteroids.dir/source/Bullet.cpp.o"
   "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.cpp" "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/asteroids.dir/source/Ship.cpp.o"
   "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/main.cpp" "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/asteroids.dir/source/main.cpp.o"
+  "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.cpp" "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o"
   "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/geometryhelpers.cpp" "/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

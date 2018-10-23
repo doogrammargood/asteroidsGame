@@ -68,7 +68,7 @@ void Bullet::gl_init(){
 	  right_bullet[i]=elipse_outer[i/2]+vec2(6.0/7.0,0);//shifts the bullet by 2/7ths
 	  right_bullet[i+1]=elipse_inner[i/2]+vec2(6.0/7.0,0);
   }
-  std::string vshader = shader_path + "vshader_Ship.glsl";
+  std::string vshader = shader_path + "vshader_Asteroid.glsl";
   std::string fshader = shader_path + "fshader_Ship.glsl";
   GLchar* vertex_shader_source = readShaderSource(vshader.c_str());
   GLchar* fragment_shader_source = readShaderSource(fshader.c_str());
@@ -92,7 +92,7 @@ void Bullet::gl_init(){
   glBindFragDataLocation(GLvars.program, 0, "fragColor");
   
   GLvars.vpos_location   = glGetAttribLocation(GLvars.program, "vPos");
-  GLvars.vcolor_location = glGetAttribLocation(GLvars.program, "vColor" );
+  GLvars.vcolor_location =  glGetUniformLocation(GLvars.program,  "vColor" );
   GLvars.M_location = glGetUniformLocation(GLvars.program, "M" );
   
   
@@ -100,26 +100,20 @@ void Bullet::gl_init(){
   glBindVertexArray(GLvars.vao_right);
   glGenBuffers(1,&GLvars.buffer_right);
   glBindBuffer(GL_ARRAY_BUFFER, GLvars.buffer_right);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(right_bullet)+sizeof(bullet_color_right), NULL, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(right_bullet), NULL, GL_STATIC_DRAW);
   glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(right_bullet), right_bullet);
-  glBufferSubData(GL_ARRAY_BUFFER,sizeof(right_bullet),sizeof(bullet_color_right),bullet_color_right);
   glEnableVertexAttribArray(GLvars.vpos_location);
-  glEnableVertexAttribArray(GLvars.vcolor_location);
   glVertexAttribPointer( GLvars.vpos_location, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );
-  glVertexAttribPointer( GLvars.vcolor_location, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(right_bullet)) );		
   glBindVertexArray(0);
   
   glGenVertexArrays( 1, &GLvars.vao_left );
   glBindVertexArray( GLvars.vao_left );
   glGenBuffers( 1, &GLvars.buffer_left );
   glBindBuffer( GL_ARRAY_BUFFER, GLvars.buffer_left );
-  glBufferData( GL_ARRAY_BUFFER, sizeof(left_bullet) + sizeof(bullet_color_left), NULL, GL_STATIC_DRAW );
+  glBufferData( GL_ARRAY_BUFFER, sizeof(left_bullet), NULL, GL_STATIC_DRAW );
   glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(left_bullet), left_bullet );
-  glBufferSubData( GL_ARRAY_BUFFER, sizeof(left_bullet), sizeof(bullet_color_left), bullet_color_left );
   glEnableVertexAttribArray(GLvars.vpos_location);
-  glEnableVertexAttribArray(GLvars.vcolor_location );
   glVertexAttribPointer( GLvars.vpos_location, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );
-  glVertexAttribPointer( GLvars.vcolor_location, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(left_bullet)) );
   glBindVertexArray(0);
 	
 }
@@ -129,6 +123,7 @@ void Bullet::draw(mat4 proj){
   proj = proj*Translate(state.position.x,state.position.y,0)*Scale(0.15,0.15,0.15)*RotateZ(-360/(2*3.141592654)*state.angle);
   //If you have a modelview matrix, pass it with proj
   glUniformMatrix4fv( GLvars.M_location, 1, GL_TRUE, proj );
+  glUniform4fv(GLvars.vcolor_location, 1, state.color);
   glUseProgram( GLvars.program );
   if (state.right_laser){
     glBindVertexArray(GLvars.vao_right);//draw the right bullet

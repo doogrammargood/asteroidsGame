@@ -16,6 +16,7 @@
 
 #include <list>
 #include <vector>
+#include <cmath>
 #include "utils/Angel.h"
 using namespace Angel;
 
@@ -24,6 +25,7 @@ using namespace Angel;
 #include "Asteroid.h"
 #include "Bullet.h"
 #include "utils/geometryhelpers.h"
+#include "Background.h"
 
 
 #endif

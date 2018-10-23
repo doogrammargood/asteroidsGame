@@ -32,6 +32,16 @@ tuple
 common.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
 
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.cpp
+common.h
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
+
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.h
+common.h
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
+stb/stb_image.h
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.h
+
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.cpp
 common.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
@@ -51,6 +61,8 @@ typeinfo
 -
 Bullet.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.h
+cstring
+-
 
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.h
 common.h
@@ -71,6 +83,8 @@ list
 -
 vector
 -
+cmath
+-
 utils/Angel.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/Angel.h
 shader.h
@@ -83,6 +97,8 @@ Bullet.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.h
 utils/geometryhelpers.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/geometryhelpers.h
+Background.h
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.h
 
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/main.cpp
 common.h
@@ -92,6 +108,40 @@ time.h
 SFML/Audio.hpp
 -
 algorithm
+-
+
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.cpp
+stb_image.h
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.h
+
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.h
+stb_image.h
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.h
+stdio.h
+-
+stdarg.h
+-
+stddef.h
+-
+stdlib.h
+-
+string.h
+-
+limits.h
+-
+math.h
+-
+stdio.h
+-
+assert.h
+-
+stdint.h
+-
+emmintrin.h
+-
+intrin.h
+-
+arm_neon.h
 -
 
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/Angel.h
@@ -240,6 +290,12 @@ source/Asteroid.h
 common.h
 source/common.h
 
+source/Background.h
+common.h
+source/common.h
+stb/stb_image.h
+source/stb/stb_image.h
+
 source/Bullet.h
 common.h
 source/common.h
@@ -263,6 +319,8 @@ list
 -
 vector
 -
+cmath
+-
 utils/Angel.h
 source/utils/Angel.h
 shader.h
@@ -275,6 +333,38 @@ Bullet.h
 source/Bullet.h
 utils/geometryhelpers.h
 source/utils/geometryhelpers.h
+Background.h
+source/Background.h
+
+source/stb/stb_image.h
+stb_image.h
+source/stb/stb_image.h
+stdio.h
+-
+stdarg.h
+-
+stddef.h
+-
+stdlib.h
+-
+string.h
+-
+limits.h
+-
+math.h
+-
+stdio.h
+-
+assert.h
+-
+stdint.h
+-
+emmintrin.h
+-
+intrin.h
+-
+arm_neon.h
+-
 
 source/utils/Angel.h
 cmath

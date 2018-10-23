@@ -57,7 +57,7 @@ bool isInsidePolygon(vec2 pt, vec2 *polygon, int l){//l is the length of the pol
 			p_pt = polygon[i-1];
 			c_pt = polygon[i];
 			}
-		if((p_pt.y <= pt.y and c_pt.y >= pt.y) or (p_pt.y >= pt.y and c_pt.y <= pt.y)){ //the pt.y needs to be between c_pt.y and p_pt.y
+		if((p_pt.y < pt.y and c_pt.y > pt.y) or (p_pt.y > pt.y and c_pt.y < pt.y)){ //the pt.y needs to be between c_pt.y and p_pt.y
 		  //std::cout<<"inside "<<std::endl;
 		  x = c_pt.x+( (c_pt.x-p_pt.x)*(pt.y - c_pt.y)/ (c_pt.y-p_pt.y) );
 		  if (x > pt.x) {
@@ -140,8 +140,139 @@ vec2 *smoothCorners(vec2 *polygon, int l){//Will smooth out the corners of the p
 		  angle = rotation(t)*vec2(1.0,0.0);
 		  smooth_shape[n*i+j]= r*angle + center;
 		  }
-	  
 	  }
 	  return smooth_shape;
 	}
+
+bool isConvex(int index, vec2 *polygon, int l){//Returns true if the vertex is convex. Good trick here https://stackoverflow.com/questions/2663570/how-to-calculate-both-positive-and-negative-angle-between-two-lines
+	if (index >= l) 
+		std::cout<<"index out of bounds."<<std::endl;
+	vec2 toVertex;
+	vec2 fromVertex;
+	if (index == 0){
+		toVertex = polygon[index] - polygon[l-1];
+		fromVertex = polygon[index + 1] - polygon[index];
+		//return false;
+		}
+	else if (index == l-1){
+		toVertex = polygon[index] - polygon[index-1];
+		fromVertex = polygon[0] - polygon[index];		
+		//return false;
+		}
+	else{
+		toVertex = polygon[index] - polygon[index-1];
+		fromVertex = polygon[index + 1] - polygon[index];//We need to determine whether the angle between toVertex and fromVertex is positive or negative.
+	}
+	float toAngle = atan2(toVertex.y, toVertex.x);
+	float fromAngle = atan2(fromVertex.y, fromVertex.x);
+	while ( abs(toAngle - fromAngle) > pi){ //normalize
+		if (toAngle > fromAngle)
+			fromAngle += 2*pi;
+		else if (toAngle < fromAngle)
+			fromAngle -= 2*pi;
+	}
+	if (toAngle - fromAngle > 0)
+		return true;
+	return false;
+	}
+
+
+int findEar(vec2 *polygon, int l){ //returns the index of an ear
+	for (int i=0; i<l; i++){
+		
+		if (isConvex(i, polygon, l) and testEar(i, polygon, l))
+			return i;
+		}
+	std::cout<<"That's weird. Ears always exist."<<std::endl;
+	std::cout<<l<<std::endl;
+	return -1;
+	}
+bool testEar(int index, vec2 *polygon, int l){ //assumes index is a convex point.
+	vec2 testTriangle[3];
+	int a,b,c;
+	if (index ==0){
+		testTriangle[0] = polygon[l-1];
+		testTriangle[1] = polygon[index];
+		testTriangle[2] = polygon[index+1];
+		a=l-1;
+		b=0;
+		c=1;
+	}
+	else if (index == l-1){
+		testTriangle[0] = polygon[index-1];
+		testTriangle[1] = polygon[index];
+		testTriangle[2] = polygon[0];
+		a=l-2;
+		b=l-1;
+		c=0;
+	}
+	else{
+		testTriangle[0] = polygon[index-1];
+		testTriangle[1] = polygon[index];
+		testTriangle[2] = polygon[index+1];
+		a=index-1;
+		b=index;
+		c=index+1;
+	}
+	for (int j=0; j<l; j++){
+		if (j!=a and j!=b and j!=c and isInsidePolygon(polygon[j], testTriangle, 3))
+			return false;
+		}
+	return true;
+	}
 	
+vec2* splitOffEar(int index, vec2 *polygon, int l){
+	vec2* smallerPolygon=new vec2[l-1];
+	for (int i=0; i<index; i++){
+		smallerPolygon[i]=polygon[i];
+		}
+	for (int j=index+1; j<l; j++){
+		smallerPolygon[j-1]=polygon[j];
+		}
+	return smallerPolygon;
+	
+	}
+
+vec2 *triangulatePolygon(vec2 *polygon, int l){
+	//This website has been useful: http://cgm.cs.mcgill.ca/~godfried/teaching/cg-projects/97/Ian/algorithm1.html
+	int safety_counter = 0; //I would loop while true, but that seems dangerous.
+	int current_ear;
+	vec2* triangles = new vec2[3*(l-2)];
+	int t_index = 0;
+	vec2* smallerPolygon;
+	vec2* polygonCopy= new vec2[l];
+	for (int i=0; i<l; i++){
+		polygonCopy[i]=polygon[i];
+		}
+	
+	while(safety_counter < 10000){
+		current_ear = findEar(polygonCopy, l);
+		//std::cout<<current_ear<<std::endl;
+		if (current_ear == 0){
+			triangles[t_index] = polygonCopy[l - 1];
+			triangles[t_index+1]= polygonCopy[current_ear];
+			triangles[t_index+2]= polygonCopy[current_ear + 1];
+			}
+		else if (current_ear == l-1){
+			triangles[t_index] = polygonCopy[current_ear - 1];
+			triangles[t_index+1]= polygonCopy[current_ear];
+			triangles[t_index+2]= polygonCopy[0];
+		}
+		else{
+			triangles[t_index] = polygonCopy[current_ear - 1];
+			triangles[t_index+1]= polygonCopy[current_ear];
+			triangles[t_index+2]= polygonCopy[current_ear + 1];
+			}
+		t_index+=3;
+		smallerPolygon = splitOffEar(current_ear, polygonCopy, l);
+		delete[] polygonCopy;
+		polygonCopy = smallerPolygon;
+		l=l-1;
+		if (l == 2){ //So we have just a line segment left. 2 endpoints are the same.
+			delete[] polygonCopy;
+			return triangles;
+		}
+		safety_counter++;
+	}
+	
+}

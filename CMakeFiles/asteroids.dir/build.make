@@ -81,9 +81,33 @@ CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o.provides: CMakeFiles
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o.provides.build: CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o
 
 
+CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o: CMakeFiles/asteroids.dir/flags.make
+CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o: source/stb/stb_image.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o -c /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.cpp
+
+CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.cpp > CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.i
+
+CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.cpp -o CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.s
+
+CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o.requires:
+
+.PHONY : CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o.requires
+
+CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o.provides: CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o.requires
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o.provides.build
+.PHONY : CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o.provides
+
+CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o.provides.build: CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o
+
+
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: CMakeFiles/asteroids.dir/flags.make
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/Asteroid.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/asteroids.dir/source/Asteroid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/asteroids.dir/source/Asteroid.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/asteroids.dir/source/Asteroid.cpp.o -c /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Asteroid.cpp
 
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.i: cmake_force
@@ -105,9 +129,33 @@ CMakeFiles/asteroids.dir/source/Asteroid.cpp.o.provides: CMakeFiles/asteroids.di
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o.provides.build: CMakeFiles/asteroids.dir/source/Asteroid.cpp.o
 
 
+CMakeFiles/asteroids.dir/source/Background.cpp.o: CMakeFiles/asteroids.dir/flags.make
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/Background.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/asteroids.dir/source/Background.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/asteroids.dir/source/Background.cpp.o -c /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.cpp
+
+CMakeFiles/asteroids.dir/source/Background.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asteroids.dir/source/Background.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.cpp > CMakeFiles/asteroids.dir/source/Background.cpp.i
+
+CMakeFiles/asteroids.dir/source/Background.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asteroids.dir/source/Background.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.cpp -o CMakeFiles/asteroids.dir/source/Background.cpp.s
+
+CMakeFiles/asteroids.dir/source/Background.cpp.o.requires:
+
+.PHONY : CMakeFiles/asteroids.dir/source/Background.cpp.o.requires
+
+CMakeFiles/asteroids.dir/source/Background.cpp.o.provides: CMakeFiles/asteroids.dir/source/Background.cpp.o.requires
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/Background.cpp.o.provides.build
+.PHONY : CMakeFiles/asteroids.dir/source/Background.cpp.o.provides
+
+CMakeFiles/asteroids.dir/source/Background.cpp.o.provides.build: CMakeFiles/asteroids.dir/source/Background.cpp.o
+
+
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: CMakeFiles/asteroids.dir/flags.make
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/Bullet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/asteroids.dir/source/Bullet.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/asteroids.dir/source/Bullet.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/asteroids.dir/source/Bullet.cpp.o -c /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.cpp
 
 CMakeFiles/asteroids.dir/source/Bullet.cpp.i: cmake_force
@@ -131,7 +179,7 @@ CMakeFiles/asteroids.dir/source/Bullet.cpp.o.provides.build: CMakeFiles/asteroid
 
 CMakeFiles/asteroids.dir/shaders/shader.cpp.o: CMakeFiles/asteroids.dir/flags.make
 CMakeFiles/asteroids.dir/shaders/shader.cpp.o: shaders/shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/asteroids.dir/shaders/shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/asteroids.dir/shaders/shader.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/asteroids.dir/shaders/shader.cpp.o -c /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/shaders/shader.cpp
 
 CMakeFiles/asteroids.dir/shaders/shader.cpp.i: cmake_force
@@ -155,7 +203,7 @@ CMakeFiles/asteroids.dir/shaders/shader.cpp.o.provides.build: CMakeFiles/asteroi
 
 CMakeFiles/asteroids.dir/source/main.cpp.o: CMakeFiles/asteroids.dir/flags.make
 CMakeFiles/asteroids.dir/source/main.cpp.o: source/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/asteroids.dir/source/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/asteroids.dir/source/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/asteroids.dir/source/main.cpp.o -c /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/main.cpp
 
 CMakeFiles/asteroids.dir/source/main.cpp.i: cmake_force
@@ -179,7 +227,7 @@ CMakeFiles/asteroids.dir/source/main.cpp.o.provides.build: CMakeFiles/asteroids.
 
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: CMakeFiles/asteroids.dir/flags.make
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/Ship.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/asteroids.dir/source/Ship.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/asteroids.dir/source/Ship.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/asteroids.dir/source/Ship.cpp.o -c /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.cpp
 
 CMakeFiles/asteroids.dir/source/Ship.cpp.i: cmake_force
@@ -204,7 +252,9 @@ CMakeFiles/asteroids.dir/source/Ship.cpp.o.provides.build: CMakeFiles/asteroids.
 # Object files for target asteroids
 asteroids_OBJECTS = \
 "CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o" \
+"CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o" \
 "CMakeFiles/asteroids.dir/source/Asteroid.cpp.o" \
+"CMakeFiles/asteroids.dir/source/Background.cpp.o" \
 "CMakeFiles/asteroids.dir/source/Bullet.cpp.o" \
 "CMakeFiles/asteroids.dir/shaders/shader.cpp.o" \
 "CMakeFiles/asteroids.dir/source/main.cpp.o" \
@@ -214,7 +264,9 @@ asteroids_OBJECTS = \
 asteroids_EXTERNAL_OBJECTS =
 
 asteroids: CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o
+asteroids: CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o
 asteroids: CMakeFiles/asteroids.dir/source/Asteroid.cpp.o
+asteroids: CMakeFiles/asteroids.dir/source/Background.cpp.o
 asteroids: CMakeFiles/asteroids.dir/source/Bullet.cpp.o
 asteroids: CMakeFiles/asteroids.dir/shaders/shader.cpp.o
 asteroids: CMakeFiles/asteroids.dir/source/main.cpp.o
@@ -235,7 +287,7 @@ asteroids: /usr/lib/x86_64-linux-gnu/libXinerama.so
 asteroids: /usr/lib/x86_64-linux-gnu/libXxf86vm.so
 asteroids: /usr/lib/x86_64-linux-gnu/libXcursor.so
 asteroids: CMakeFiles/asteroids.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable asteroids"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable asteroids"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/asteroids.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -244,7 +296,9 @@ CMakeFiles/asteroids.dir/build: asteroids
 .PHONY : CMakeFiles/asteroids.dir/build
 
 CMakeFiles/asteroids.dir/requires: CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o.requires
+CMakeFiles/asteroids.dir/requires: CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o.requires
 CMakeFiles/asteroids.dir/requires: CMakeFiles/asteroids.dir/source/Asteroid.cpp.o.requires
+CMakeFiles/asteroids.dir/requires: CMakeFiles/asteroids.dir/source/Background.cpp.o.requires
 CMakeFiles/asteroids.dir/requires: CMakeFiles/asteroids.dir/source/Bullet.cpp.o.requires
 CMakeFiles/asteroids.dir/requires: CMakeFiles/asteroids.dir/shaders/shader.cpp.o.requires
 CMakeFiles/asteroids.dir/requires: CMakeFiles/asteroids.dir/source/main.cpp.o.requires

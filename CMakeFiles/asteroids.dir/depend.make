@@ -6,9 +6,11 @@ CMakeFiles/asteroids.dir/shaders/shader.cpp.o: shaders/shader.h
 
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/Asteroid.cpp
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/Asteroid.h
+CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/Background.h
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/Bullet.h
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/Ship.h
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/common.h
+CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/stb/stb_image.h
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/utils/Angel.h
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/utils/geometryhelpers.h
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: source/utils/mat.h
@@ -20,11 +22,31 @@ CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: glfw-3.2/deps/vulkan/vulkan.h
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: glfw-3.2/include/GLFW/glfw3.h
 CMakeFiles/asteroids.dir/source/Asteroid.cpp.o: shaders/shader.h
 
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/Asteroid.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/Background.cpp
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/Background.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/Bullet.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/Ship.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/common.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/stb/stb_image.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/utils/Angel.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/utils/geometryhelpers.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/utils/mat.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: source/utils/vec.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: glfw-3.2/deps/KHR/khrplatform.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: glfw-3.2/deps/glad/glad.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: glfw-3.2/deps/vulkan/vk_platform.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: glfw-3.2/deps/vulkan/vulkan.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: glfw-3.2/include/GLFW/glfw3.h
+CMakeFiles/asteroids.dir/source/Background.cpp.o: shaders/shader.h
+
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/Asteroid.h
+CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/Background.h
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/Bullet.cpp
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/Bullet.h
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/Ship.h
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/common.h
+CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/stb/stb_image.h
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/utils/Angel.h
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/utils/geometryhelpers.h
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: source/utils/mat.h
@@ -37,10 +59,12 @@ CMakeFiles/asteroids.dir/source/Bullet.cpp.o: glfw-3.2/include/GLFW/glfw3.h
 CMakeFiles/asteroids.dir/source/Bullet.cpp.o: shaders/shader.h
 
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/Asteroid.h
+CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/Background.h
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/Bullet.h
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/Ship.cpp
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/Ship.h
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/common.h
+CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/stb/stb_image.h
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/utils/Angel.h
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/utils/geometryhelpers.h
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: source/utils/mat.h
@@ -53,10 +77,12 @@ CMakeFiles/asteroids.dir/source/Ship.cpp.o: glfw-3.2/include/GLFW/glfw3.h
 CMakeFiles/asteroids.dir/source/Ship.cpp.o: shaders/shader.h
 
 CMakeFiles/asteroids.dir/source/main.cpp.o: source/Asteroid.h
+CMakeFiles/asteroids.dir/source/main.cpp.o: source/Background.h
 CMakeFiles/asteroids.dir/source/main.cpp.o: source/Bullet.h
 CMakeFiles/asteroids.dir/source/main.cpp.o: source/Ship.h
 CMakeFiles/asteroids.dir/source/main.cpp.o: source/common.h
 CMakeFiles/asteroids.dir/source/main.cpp.o: source/main.cpp
+CMakeFiles/asteroids.dir/source/main.cpp.o: source/stb/stb_image.h
 CMakeFiles/asteroids.dir/source/main.cpp.o: source/utils/Angel.h
 CMakeFiles/asteroids.dir/source/main.cpp.o: source/utils/geometryhelpers.h
 CMakeFiles/asteroids.dir/source/main.cpp.o: source/utils/mat.h
@@ -68,6 +94,9 @@ CMakeFiles/asteroids.dir/source/main.cpp.o: glfw-3.2/deps/vulkan/vulkan.h
 CMakeFiles/asteroids.dir/source/main.cpp.o: glfw-3.2/include/GLFW/glfw3.h
 CMakeFiles/asteroids.dir/source/main.cpp.o: shaders/shader.h
 
+CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o: source/stb/stb_image.cpp
+CMakeFiles/asteroids.dir/source/stb/stb_image.cpp.o: source/stb/stb_image.h
+
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/utils/geometryhelpers.cpp
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: glfw-3.2/deps/KHR/khrplatform.h
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: glfw-3.2/deps/glad/glad.h
@@ -76,9 +105,11 @@ CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: glfw-3.2/deps/vulka
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: glfw-3.2/include/GLFW/glfw3.h
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: shaders/shader.h
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/Asteroid.h
+CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/Background.h
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/Bullet.h
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/Ship.h
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/common.h
+CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/stb/stb_image.h
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/utils/Angel.h
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/utils/geometryhelpers.h
 CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o: source/utils/mat.h

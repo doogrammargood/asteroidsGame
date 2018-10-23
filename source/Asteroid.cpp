@@ -38,7 +38,7 @@ Asteroid::Asteroid(){
 //Called everytime an animation tick happens
 void Asteroid::update_state(){
   if (state.flashNumber >0)
-	state.flashNumber -= 0.2;
+	state.flashNumber -= 0.1;
   state.angle += state.angular_velocity;
   state.pointing = rotation(state.angle)*vec2(0,-1.0);
   state.cur_location += state.velocity;
@@ -82,8 +82,8 @@ std::tuple<Asteroid*, Asteroid*> Asteroid::shatter(vec2 other_velocity, float ot
 		if(state.color.z==0)
 			colors = std::tuple<vec3,vec3>(vec3(1,0,0),vec3(0,1,0));
 		}
-	minus_asteroid = new Asteroid(std::get<0>(colors), rotation(-spread)*midline, state.cur_location+0.1*normalize(rotation(-spread)*midline));
-	plus_asteroid = new Asteroid(std::get<1>(colors), rotation(spread)*midline, state.cur_location+0.1*normalize(rotation(spread)*midline));
+	minus_asteroid = new Asteroid(std::get<0>(colors), rotation(-spread)*midline, state.cur_location+5*rotation(-spread)*midline);
+	plus_asteroid = new Asteroid(std::get<1>(colors), rotation(spread)*midline, state.cur_location+5*rotation(spread)*midline);
 	std::tuple<Asteroid*, Asteroid*> toReturn(minus_asteroid, plus_asteroid);
 	return toReturn;
 	}

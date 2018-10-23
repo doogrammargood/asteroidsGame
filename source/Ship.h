@@ -59,6 +59,31 @@ class Ship{
     GLint M_location;     //Reference to matrix in shader
   } GLvars;
 
+	vec2 raw_boundary[23]= { vec2( 0.5/7.0, 1.0/7.0), //The boundary without the sheild
+		    vec2( 2.0/7.0, 2.0/7.0),
+		    vec2( 3.0/7.0, 1.0/7.0),
+	    	vec2( 4.0/7.0, -1.0/7.0),
+		    vec2( 3.5/7.0, -2.0/7.0),
+			vec2( 3.0/7.0, -2.0/7.0),
+			vec2( 3.0/7.0, -1.0/7.0),
+			vec2( 2.0/7.0, -0.0/7.0),
+			vec2( 2.0/7.0, -2.0/7.0),
+			vec2( 1.25/7.0, -4.0/7.0),
+			vec2( 0.75/7.0, -5.0/7.0),
+			vec2( 0.0/7.0, -6.0/7.0), // the vectors are mirrored across y after this.
+			vec2( -0.75/7.0, -5.0/7.0),
+			vec2( -1.25/7.0, -4.0/7.0),
+			vec2( -2.0/7.0, -2.0/7.0),
+			vec2( -2.0/7.0, -0.0/7.0),
+			vec2( -3.0/7.0, -1.0/7.0),
+			vec2( -3.0/7.0, -2.0/7.0),
+			vec2( -3.5/7.0, -2.0/7.0),
+			vec2( -4.0/7.0, -1.0/7.0),
+			vec2( -3.0/7.0, 1.0/7.0),
+			vec2( -2.0/7.0, 2.0/7.0),
+			vec2( -0.5/7.0, 1.0/7.0)};
+			
+	vec2 sheilded_boundary[16];
   
 public:
   
@@ -88,10 +113,12 @@ public:
   void prepare_sheild();
   void prepare_thruster();
   void draw(mat4 proj);
+  vec2* getBoundary(); //returns the bounding box.
   inline void flip(){state.pointing *= -1; state.angle += 180; }
   inline vec2 locate(){return state.cur_location;}
   inline vec2 velocity(){return state.velocity;}
   inline float get_mass(){return state.mass;}
+  inline float get_sheild(){return state.sheild;}
   Bullet* shoot(char color); //Zap!
   void get_hit(vec2 other_velocity, float other_mass);
   

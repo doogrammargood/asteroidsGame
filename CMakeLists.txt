@@ -36,7 +36,11 @@ add_executable(asteroids WIN32 MACOSX_BUNDLE
 	source/Asteroid.h
 	source/utils/geometryhelpers.h
 	source/utils/geometryhelpers.cpp
+	source/stb/stb_image.h
+	source/stb/stb_image.cpp
 	source/Asteroid.cpp
+	source/Background.h
+	source/Background.cpp
 	source/common.h
 	source/Bullet.h
   	source/Bullet.cpp
@@ -51,7 +55,10 @@ add_executable(asteroids WIN32 MACOSX_BUNDLE
 	shaders/fshader_Ship.glsl
 	shaders/vshader_Ship.glsl
 	shaders/fshader_Asteroid.glsl
-	shaders/vshader_Asteroid.glsl)
+	shaders/vshader_Asteroid.glsl
+	shaders/vtexture_Shader.glsl
+	shaders/ftexture_Shader.glsl
+)
 
 #set(SFML_DIR "${CMAKE_SOURCE_DIR}/SFML/cmake")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake_modules")
