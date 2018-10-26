@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/asteroids.dir/shaders/shader.cpp.o"
   "CMakeFiles/asteroids.dir/source/main.cpp.o"
   "CMakeFiles/asteroids.dir/source/Ship.cpp.o"
+  "CMakeFiles/asteroids.dir/source/Explosion.cpp.o"
   "asteroids.pdb"
   "asteroids"
 )

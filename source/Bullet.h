@@ -34,7 +34,7 @@ public:
   vec2* leftBoundingBox(); //returns the polygon in world space of the left bounding box
   vec2* rightBoundingBox();
   inline vec3 get_color(){
-	  return state.color;
+	  return vec3(state.color.x, state.color.y, state.color.z);
 	  }
   inline void remove_right_laser(){
 	  state.right_laser=false;

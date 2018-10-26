@@ -13,6 +13,7 @@
 #include "Bullet.h"
 #include <cstring>
 //Ship constructor
+int numvert;
 Ship::Ship(){
 	state.cur_location = vec2(0,0);
 	state.pointing = vec2(0,-1.0);
@@ -21,7 +22,9 @@ Ship::Ship(){
 	state.turning_left = false;
 	state.turning_right = false;
 	state.thruster_on = false;
-	state.sheild = 1;
+	state.is_alive = true;
+	state.sheild = 0.5;
+	state.sheild_color = vec4(0.5,0.5,0.5,0.5);
 	vec2 *sheild_bound;
 	float *params1 = findParabola(vec2(-4.5/7.0, 0),vec2(0, -7/7.0),vec2(4.5/7.0, 0));
 	auto f1 = [params1](float x){return params1[0]*pow(x,2)+params1[1]*x+params1[2];};
@@ -52,6 +55,8 @@ void Ship::update_state(){
     if (state.thruster_on){
 	    acceleration=1/(20*state.mass);
 	  }
+	if (state.sheild_color.w >0.5)
+		state.sheild_color.w -= 0.1;
     state.velocity += acceleration*state.pointing;
 	state.velocity *= 0.98;
 	state.cur_location += state.velocity;
@@ -78,11 +83,17 @@ Bullet* Ship::shoot(char color){
 		zapper = new Bullet(state.cur_location,state.velocity,state.pointing,vec3(0.0, 0.0, 1.0));
 	return zapper;
 	}
-void Ship::get_hit(vec2 other_velocity, float other_mass){
+bool Ship::get_hit(vec2 other_velocity, float other_mass, vec3 color){
+	if (state.sheild <=0){
+		state.is_alive = false;
+		return false;
+	}
 	vec2 midline=((state.mass - other_mass) / (state.mass + other_mass) )*state.velocity + (2*other_mass/(state.mass + other_mass))*other_velocity;
+	state.sheild -= length(other_velocity-state.velocity)*other_mass;
 	state.velocity = midline;
 	state.cur_location += 3*state.velocity;
-	state.sheild -= length(other_velocity)*other_mass;
+	state.sheild_color = vec4(color.x, color.y, color.z, 1.0);
+	return true;
 	}
 void Ship::prepare_thruster(){
 	//The thruster will have this shape http://mathworld.wolfram.com/TeardropCurve.html with m=7.
@@ -107,13 +118,19 @@ void Ship::prepare_thruster(){
 	  thruster[25+i] = vec2(-thruster_curve[24-i].x,thruster_curve[24-i].y);
 	  }
   int thruster_size = sizeof(thruster);
-
+  vec2 temp;
+  temp = thruster[49];
+  thruster[0] = thruster[49];
+  thruster[49] = temp;
+  vec2 *triangulation;
+  triangulation = triangulatePolygon(thruster, 49);
   glGenVertexArrays(1,&GLvars.thrusterVAO);
   glBindVertexArray(GLvars.thrusterVAO);
   glGenBuffers(1,&GLvars.thruster_buffer);
   glBindBuffer(GL_ARRAY_BUFFER, GLvars.thruster_buffer);
-  glBufferData(GL_ARRAY_BUFFER, thruster_size, NULL, GL_STATIC_DRAW);
-  glBufferSubData(GL_ARRAY_BUFFER, 0, thruster_size, thruster);
+  //glBufferData(GL_ARRAY_BUFFER, thruster_size, NULL, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, 3*(49-2)*sizeof(*triangulation), NULL, GL_STATIC_DRAW);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, 3*(49-2)*sizeof(*triangulation), triangulation);
   glEnableVertexAttribArray(GLvars.vpos_location);
   glVertexAttribPointer( GLvars.vpos_location, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );
   glBindVertexArray(0);
@@ -144,19 +161,35 @@ void Ship::prepare_sheild(){
 		else if(i<80){sheild[i]=shpt3[i-60];}
 		else {sheild[i]=shpt4[i-80];}
 		}
+	vec2 temp;
+	temp = sheild[0];
+	sheild[0]=sheild[99];
+	sheild[99]=temp;
+	temp = sheild[39];
+	sheild[39] = sheild[40];
+	sheild[40] = temp;
+	temp = sheild[79];
+	sheild[79]=sheild[80];
+	sheild[80]=temp;
+	for (int i=0; i<100; i++){
+		sheild[i].x = -sheild[i].x;
+		}
+	vec2* triangulation;
+	triangulation = triangulatePolygon(sheild, 100);
 	glBindFragDataLocation(GLvars.program, 0, "fragColor");
 
   
   GLvars.vpos_location   = glGetAttribLocation(GLvars.program, "vPos");
 
   int sheild_size = sizeof(sheild);
-
+  
   glGenVertexArrays(1,&GLvars.sheildVAO);
   glBindVertexArray(GLvars.sheildVAO);
   glGenBuffers(1,&GLvars.sheild_buffer);
   glBindBuffer(GL_ARRAY_BUFFER, GLvars.sheild_buffer);
-  glBufferData(GL_ARRAY_BUFFER, sheild_size, NULL, GL_STATIC_DRAW);
-  glBufferSubData(GL_ARRAY_BUFFER, 0, sheild_size, sheild);
+  //glBufferData(GL_ARRAY_BUFFER, sheild_size, NULL, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, 3*(100-2)*sizeof(*triangulation), NULL, GL_STATIC_DRAW);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, 3*(100-2)*sizeof(*triangulation), *triangulation);
   glEnableVertexAttribArray(GLvars.vpos_location);
   glVertexAttribPointer( GLvars.vpos_location, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );
   glBindVertexArray(0);
@@ -174,7 +207,7 @@ void Ship::prepare_cockpit(){
   vec2 cockpit[361]; //will be an elipse.
   
   for (int i=0; i<361; i++){
-	  cockpit[i] = rotation((i-1)*pi/180.0)*vec2(0.0,1.0);
+	  cockpit[i] = rotation(-(i-1)*pi/180.0)*vec2(0.0,1.0);
 	  }
 
   mat2 scale(vec2(0.8/7.0,0.0),vec2(0.0,2.0/7.0));
@@ -182,7 +215,7 @@ void Ship::prepare_cockpit(){
       cockpit[i] = scale*cockpit[i]; //stretch the cockpit into an elipse
 	  cockpit[i] = cockpit[i] + vec2(0.0, -2.75/7.0);
 	  }
-  //vec2* tri_cockpit = triangulatePolygon(cockpit,361);
+  vec2* tri_cockpit = triangulatePolygon(cockpit,361);
 	  
 	  //String with absolute paths to our shaders, shader_path set by CMAKE hack
   std::string vshader = shader_path + "vshader_Asteroid.glsl";
@@ -198,10 +231,10 @@ void Ship::prepare_cockpit(){
   glBindVertexArray(GLvars.cockpitVAO);
   glGenBuffers(1,&GLvars.cockpit_buffer);
   glBindBuffer(GL_ARRAY_BUFFER, GLvars.cockpit_buffer);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(cockpit), NULL, GL_STATIC_DRAW);
-  //glBufferData(GL_ARRAY_BUFFER, 3*(361-2)*sizeof(*tri_cockpit), NULL, GL_STATIC_DRAW);
-  //glBufferSubData(GL_ARRAY_BUFFER, 0, 3*(361-2)*sizeof(*tri_cockpit), *tri_cockpit);
-  glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(cockpit), cockpit);
+  //glBufferData(GL_ARRAY_BUFFER, sizeof(cockpit), NULL, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, 3*(361-2)*sizeof(*tri_cockpit), NULL, GL_STATIC_DRAW);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, 3*(361-2)*sizeof(*tri_cockpit), *tri_cockpit);
+  //glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(cockpit), tri_cockpit);
   glEnableVertexAttribArray(GLvars.vpos_location);
   glVertexAttribPointer( GLvars.vpos_location, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );
   glBindVertexArray(0);
@@ -217,10 +250,17 @@ void Ship::gl_init(){
   ship_vert[23];*/
   vec2 *smooth_ship;
   smooth_ship = smoothCorners(ship_vert, 23);
+  //makeSimple(smooth_ship,230);
+  vec2 temp=smooth_ship[49]; //for some reason smooth_ship was non-simple.
+  smooth_ship[49]=smooth_ship[50];
+  smooth_ship[50]=temp;
+  temp = smooth_ship[179];
+  smooth_ship[179]=smooth_ship[180];
+  smooth_ship[180]=temp;
+  numvert = 3*(230-2);
   
   vec2 *triangulatedShip;
   triangulatedShip = triangulatePolygon(smooth_ship, 230);
-  
 //  for (int i=0; i<23-1;i++){
 //	  std::cout<<triangulatedShip[i]<<","<<triangulatedShip[i+1]<<","<<triangulatedShip[i+2]<<std::endl;
 //	  }
@@ -247,7 +287,8 @@ void Ship::gl_init(){
   
   glLinkProgram(GLvars.program);
   check_program_link(GLvars.program);
-  
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glBindFragDataLocation(GLvars.program, 0, "fragColor");
   
   GLvars.vpos_location   = glGetAttribLocation(GLvars.program, "vPos");
@@ -268,11 +309,11 @@ void Ship::gl_init(){
   //glBufferData( GL_ARRAY_BUFFER, 230*sizeof(*smooth_ship) + sizeof(ship_color), NULL, GL_STATIC_DRAW );
   //glBufferData( GL_ARRAY_BUFFER, 230*sizeof(*smooth_ship), NULL, GL_STATIC_DRAW );
   //glBufferData( GL_ARRAY_BUFFER, 23*sizeof(ship_vert[0]), NULL, GL_STATIC_DRAW );
-  glBufferData( GL_ARRAY_BUFFER, 3*(230-2)*sizeof(*triangulatedShip), NULL, GL_STATIC_DRAW);
+  glBufferData( GL_ARRAY_BUFFER, numvert*sizeof(*triangulatedShip), NULL, GL_STATIC_DRAW);
   //First part of array holds vertices
   //glBufferSubData( GL_ARRAY_BUFFER, 0, 3*(230-2)*sizeof(*triangulatedShip), *triangulatedShip );
   //glBufferSubData(GL_ARRAY_BUFFER, 0, 23*sizeof(ship_vert[0]), ship_vert);
-  glBufferSubData(GL_ARRAY_BUFFER, 0, 3*(230-2)*sizeof(*triangulatedShip), *triangulatedShip);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, numvert*sizeof(*triangulatedShip), *triangulatedShip);
   
   glEnableVertexAttribArray(GLvars.vpos_location);
   
@@ -287,8 +328,10 @@ void Ship::gl_init(){
 
 //Draw a ship
 void Ship::draw(mat4 proj){
+  if (!state.is_alive)
+	  return;
 	
-  //proj = proj*Translate(state.cur_location.x,state.cur_location.y,0)*Scale(0.15,0.15,0.15)*RotateZ(state.angle)*Translate(0,0.25,0);
+  proj = proj*Translate(state.cur_location.x,state.cur_location.y,0)*Scale(0.15,0.15,0.15)*RotateZ(state.angle)*Translate(0,0.25,0);
   //GLuint glShaderProgram;
   
   //GLuint cockpitVAO;
@@ -300,18 +343,19 @@ void Ship::draw(mat4 proj){
   glUniform4fv(GLvars.vcolor_location, 1, vec4(1.0,1.0,1.0,1.0));
   
   //Draw something
-  glDrawArrays(GL_TRIANGLES, 0, 3*(230-2));
+  glDrawArrays(GL_TRIANGLES, 0, numvert);
   glBindVertexArray(GLvars.cockpitVAO);
   glUniform4fv(GLvars.vcolor_location, 1, vec4(0.0,0.0,0.0,1.0));
-  //glDrawArrays(GL_TRIANGLES,0,3*(361-2));
+  glDrawArrays(GL_TRIANGLES,0,3*(361-2));
   if (state.sheild>0){
+	glUniform4fv(GLvars.vcolor_location, 1, state.sheild_color);
 	glBindVertexArray(GLvars.sheildVAO);
-	//glDrawArrays(GL_LINE_LOOP,0,100);
+	glDrawArrays(GL_TRIANGLES,0,3*(100-2));
   }
   if(state.thruster_on){
     glBindVertexArray(GLvars.thrusterVAO);
 	glUniform4fv(GLvars.vcolor_location, 1, vec3(216/255.0,60/255.0,63/255.0));
-	glDrawArrays(GL_LINE_LOOP,0,100);
+	glDrawArrays(GL_TRIANGLES,0,3*(49-2));
   }
   
   glBindVertexArray(0);

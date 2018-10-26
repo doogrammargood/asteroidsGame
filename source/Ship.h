@@ -12,10 +12,6 @@
 #include "common.h"
 #include "Bullet.h"
 
-#define _MAX_SPEED 10
-#define _DAMPING 0.98
-#define _ACC 3
-#define _ROT 15
 
 class Ship{
 
@@ -41,6 +37,8 @@ class Ship{
     bool thruster_on;    //Boolean if a thruster is on
 	bool turning_left;
 	bool turning_right;
+	bool is_alive;
+	vec4 sheild_color;
   } state;
   
   //OpenGL variables for a ship
@@ -105,10 +103,22 @@ public:
   inline void stop_rotate_left(){
 	  state.turning_left = false;
 	  }
+  inline bool living(){
+	  return state.is_alive;
+	  }
+  inline void revive(){
+	  state.is_alive = true;
+	  state.sheild = 0.3;
+	  state.turning_right = false;
+	  state.turning_left = false;
+	  }
+  inline vec3 sheild_color(){
+	  return vec3(state.sheild_color.x, state.sheild_color.y, state.sheild_color.z);
+	  }
     
   void update_state();
   
-  void gl_init();  
+  void gl_init();
   void prepare_cockpit();
   void prepare_sheild();
   void prepare_thruster();
@@ -120,7 +130,7 @@ public:
   inline float get_mass(){return state.mass;}
   inline float get_sheild(){return state.sheild;}
   Bullet* shoot(char color); //Zap!
-  void get_hit(vec2 other_velocity, float other_mass);
+  bool get_hit(vec2 other_velocity, float other_mass, vec3 color);
   
 };
 

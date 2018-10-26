@@ -52,6 +52,8 @@ add_executable(asteroids WIN32 MACOSX_BUNDLE
 	source/main.cpp
 	source/Ship.cpp
 	source/Ship.h
+	source/Explosion.cpp
+	source/Explosion.h
 	shaders/fshader_Ship.glsl
 	shaders/vshader_Ship.glsl
 	shaders/fshader_Asteroid.glsl

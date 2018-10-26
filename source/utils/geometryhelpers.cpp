@@ -40,7 +40,64 @@ vec2* drawCurve(float start, float end, std::function<float(float)> cur, int num
 		}
 	return resultingPoints;
 	}
-
+	
+bool lineSegmentsIntersect(vec2 v1, vec2 v2, vec2 w1, vec2 w2){
+	//This method comes from slide 23 of the lecture slides poly_geo_algor
+	float E = w1.x - v1.x;
+	float F = w1.y - v1.y;
+	float A = v2.x - v1.x;
+	float B = w1.x - w2.x;
+	float C = v2.y - v1.y;
+	float D = w1.y - w2.y;
+	if (A*D-C*B != 0){
+		float t = (E*D-F*B)/(A*D-C*B);
+		float p = (A*F-C*E)/(A*D-C*B);
+		if (t>=0 && t<1 && p>=0 && p<1)
+			return true;
+		return false;
+	}
+	else{
+		if ((E*D-F*B==0) && (A*F-C*E)==0 )//Maybe these should be 'nearly equal'?
+			//return true;
+			return false;
+		return false;
+		}
+	}
+	
+bool polygonIsSimple(vec2* polygon, int l){
+	for (int i=0; i<l-1; i++){ //loop through every pair of edges and see if they intersect.
+		for (int j=i+1; j<l-1; j++){
+			if (lineSegmentsIntersect(polygon[i],polygon[i+1],polygon[j],polygon[j+1])){
+				std::cout<<i<<" "<<j<<std::endl;
+				std::cout<<" "<<polygon[i]<<" "<<polygon[i+1]<<""<<polygon[j]<<" "<<polygon[j+1]<<std::endl;
+				return false;
+			}
+			}
+	if (lineSegmentsIntersect(polygon[i],polygon[i+1],polygon[l-1],polygon[0]))
+		return false;
+	}
+	return true;
+	}
+void reverse(int start, int end, vec2* polygon, int l){ //reverses the vertices start... end
+	int total = end - start + 1; //This had better be > 1
+	vec2 temp[total];
+	for (int i = start; i<end+1; i++){
+		temp[i-start] = polygon[i];
+		}
+	for (int i = start; i<end+1; i++){
+		polygon[i] = temp[end-(i-start)];
+		}
+	
+		}
+void makeSimple(vec2 *polygon, int l){ //If a polygon is not simple, we should fix it.
+		for (int i=0; i<l-1; i++){ //loop through every pair of edges and see if they intersect.
+		for (int j=i+1; j<l-1; j++){
+			if (lineSegmentsIntersect(polygon[i],polygon[i+1],polygon[j],polygon[j+1]))
+				reverse(i+1,j, polygon, l);
+		}
+	}
+}
+/*
 bool isInsidePolygon(vec2 pt, vec2 *polygon, int l){//l is the length of the polygon
 	//returns True if the point is inside the polygon.
 	//implements the ray casting algorithm https://en.wikipedia.org/wiki/Point_in_polygon
@@ -72,6 +129,61 @@ bool isInsidePolygon(vec2 pt, vec2 *polygon, int l){//l is the length of the pol
 		return false;
 		}
 }
+*/bool isConvex(int index, vec2 *polygon, int l){//Returns true if the vertex is convex. Good trick here https://stackoverflow.com/questions/2663570/how-to-calculate-both-positive-and-negative-angle-between-two-lines
+	if (index >= l) 
+		std::cout<<"index out of bounds."<<std::endl;
+	vec2 toVertex;
+	vec2 fromVertex;
+	if (index == 0){
+		toVertex = polygon[index] - polygon[l-1];
+		fromVertex = polygon[index + 1] - polygon[index];
+		//return false;
+		}
+	else if (index == l-1){
+		toVertex = polygon[index] - polygon[index-1];
+		fromVertex = polygon[0] - polygon[index];		
+		//return false;
+		}
+	else{
+		toVertex = polygon[index] - polygon[index-1];
+		fromVertex = polygon[index + 1] - polygon[index];//We need to determine whether the angle between toVertex and fromVertex is positive or negative.
+	}
+	toVertex = normalize(toVertex);
+	fromVertex = normalize(fromVertex);
+	if (toVertex.x*fromVertex.y-toVertex.y*fromVertex.x < 0)
+		return true;
+	else
+		return false;
+}
+
+bool isInsidePolygon(vec2 point, vec2* polygon, int l){ 
+	bool inside = false;
+	vec2 p1;
+	vec2 p2;
+	vec2 temp; //used for swap.
+	for (int i = 0; i<l; i++){ //loop through the edges of the polygon
+		if (i==0){
+			p1 = polygon[l-1];
+			p2 = polygon[i];
+		}
+		else{
+			p1 = polygon[i-1];
+			p2 = polygon[i];
+			}
+		// get second edge endpoint from polygon    
+		if (p1.y > p2.y){//swap p1 and p2
+			temp = p1;
+			p1 = p2;
+			p2 = temp;
+		}
+		//want p1 to p2 to point in +y direction
+		if (point.y > p1.y) //above lower edge endpoint
+			if (point.y < p2.y){ //below upper edge endpoint
+				if (p1.y != p2.y){  //if edge is not horizontal do half-plane check// z of crossproduct(point-p1, p2-p1) > 0) means we’re to the right
+				if ((point.x - p1.x) * (p2.y - p1.y) - ((p2.x - p1.x) * (point.y - p1.y)) > 0)
+					inside = !inside;
+				// if true, point is to right of edge (and thus in the “strip”)        
+				}       }    }return inside;   }
 
 bool polygonsIntersect(vec2 *polygon1, vec2 *polygon2, int l1, int l2){
 	for (int i=0; i<l2; i++){
@@ -130,7 +242,8 @@ vec2 *smoothCorners(vec2 *polygon, int l){//Will smooth out the corners of the p
 	  
 	  start_angle = pi+(center_angle +(pi/2.0 - theta));
 	  end_angle   = pi+(center_angle -(pi/2.0 - theta));
-	  if (isInsidePolygon((99.0*p1+direction)/100.0, polygon, l)){//reverse the circle orientation if outside the polygon.
+	  //if (isInsidePolygon((99.0*p1+direction)/100.0, polygon, l)){//reverse the circle orientation if outside the polygon.
+		if (isConvex(i,polygon,l)){
 		  temp = start_angle;
 		  start_angle = end_angle;
 		  end_angle = temp;
@@ -144,7 +257,7 @@ vec2 *smoothCorners(vec2 *polygon, int l){//Will smooth out the corners of the p
 	  return smooth_shape;
 	}
 
-bool isConvex(int index, vec2 *polygon, int l){//Returns true if the vertex is convex. Good trick here https://stackoverflow.com/questions/2663570/how-to-calculate-both-positive-and-negative-angle-between-two-lines
+/*bool isConvex(int index, vec2 *polygon, int l){//Returns true if the vertex is convex. Good trick here https://stackoverflow.com/questions/2663570/how-to-calculate-both-positive-and-negative-angle-between-two-lines
 	if (index >= l) 
 		std::cout<<"index out of bounds."<<std::endl;
 	vec2 toVertex;
@@ -174,7 +287,7 @@ bool isConvex(int index, vec2 *polygon, int l){//Returns true if the vertex is c
 	if (toAngle - fromAngle > 0)
 		return true;
 	return false;
-	}
+	}*/
 
 
 int findEar(vec2 *polygon, int l){ //returns the index of an ear
@@ -188,7 +301,7 @@ int findEar(vec2 *polygon, int l){ //returns the index of an ear
 	return -1;
 	}
 bool testEar(int index, vec2 *polygon, int l){ //assumes index is a convex point.
-	vec2 testTriangle[3];
+	vec2 testTriangle[4];
 	int a,b,c;
 	if (index ==0){
 		testTriangle[0] = polygon[l-1];
@@ -214,8 +327,9 @@ bool testEar(int index, vec2 *polygon, int l){ //assumes index is a convex point
 		b=index;
 		c=index+1;
 	}
+	testTriangle[3] = testTriangle[0];
 	for (int j=0; j<l; j++){
-		if (j!=a and j!=b and j!=c and isInsidePolygon(polygon[j], testTriangle, 3))
+		if (j!=a and j!=b and j!=c and isInsidePolygon(polygon[j], testTriangle, 4))
 			return false;
 		}
 	return true;
@@ -268,6 +382,7 @@ vec2 *triangulatePolygon(vec2 *polygon, int l){
 		delete[] polygonCopy;
 		polygonCopy = smallerPolygon;
 		l=l-1;
+		
 		if (l == 2){ //So we have just a line segment left. 2 endpoints are the same.
 			delete[] polygonCopy;
 			return triangles;

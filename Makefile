@@ -297,6 +297,33 @@ source/Bullet.cpp.s:
 	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/Bullet.cpp.s
 .PHONY : source/Bullet.cpp.s
 
+source/Explosion.o: source/Explosion.cpp.o
+
+.PHONY : source/Explosion.o
+
+# target to build an object file
+source/Explosion.cpp.o:
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/Explosion.cpp.o
+.PHONY : source/Explosion.cpp.o
+
+source/Explosion.i: source/Explosion.cpp.i
+
+.PHONY : source/Explosion.i
+
+# target to preprocess a source file
+source/Explosion.cpp.i:
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/Explosion.cpp.i
+.PHONY : source/Explosion.cpp.i
+
+source/Explosion.s: source/Explosion.cpp.s
+
+.PHONY : source/Explosion.s
+
+# target to generate assembly for a file
+source/Explosion.cpp.s:
+	$(MAKE) -f CMakeFiles/asteroids.dir/build.make CMakeFiles/asteroids.dir/source/Explosion.cpp.s
+.PHONY : source/Explosion.cpp.s
+
 source/Ship.o: source/Ship.cpp.o
 
 .PHONY : source/Ship.o
@@ -432,6 +459,9 @@ help:
 	@echo "... source/Bullet.o"
 	@echo "... source/Bullet.i"
 	@echo "... source/Bullet.s"
+	@echo "... source/Explosion.o"
+	@echo "... source/Explosion.i"
+	@echo "... source/Explosion.s"
 	@echo "... source/Ship.o"
 	@echo "... source/Ship.i"
 	@echo "... source/Ship.s"

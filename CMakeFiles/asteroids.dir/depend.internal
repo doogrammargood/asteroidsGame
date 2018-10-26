@@ -9,6 +9,7 @@ CMakeFiles/asteroids.dir/source/Asteroid.cpp.o
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Asteroid.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.h
@@ -27,6 +28,7 @@ CMakeFiles/asteroids.dir/source/Background.cpp.o
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.cpp
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.h
@@ -45,6 +47,26 @@ CMakeFiles/asteroids.dir/source/Bullet.cpp.o
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.cpp
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/Angel.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/geometryhelpers.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/mat.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/vec.h
+ glfw-3.2/deps/KHR/khrplatform.h
+ glfw-3.2/deps/glad/glad.h
+ glfw-3.2/deps/vulkan/vk_platform.h
+ glfw-3.2/deps/vulkan/vulkan.h
+ glfw-3.2/include/GLFW/glfw3.h
+ shaders/shader.h
+CMakeFiles/asteroids.dir/source/Explosion.cpp.o
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Asteroid.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.cpp
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/stb/stb_image.h
@@ -62,6 +84,7 @@ CMakeFiles/asteroids.dir/source/Ship.cpp.o
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Asteroid.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.cpp
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
@@ -80,6 +103,7 @@ CMakeFiles/asteroids.dir/source/main.cpp.o
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Asteroid.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Bullet.h
+ /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
  /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/main.cpp
@@ -108,6 +132,7 @@ CMakeFiles/asteroids.dir/source/utils/geometryhelpers.cpp.o
  source/Asteroid.h
  source/Background.h
  source/Bullet.h
+ source/Explosion.h
  source/Ship.h
  source/common.h
  source/stb/stb_image.h

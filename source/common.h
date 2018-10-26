@@ -26,6 +26,6 @@ using namespace Angel;
 #include "Bullet.h"
 #include "utils/geometryhelpers.h"
 #include "Background.h"
-
+#include "Explosion.h"
 
 #endif

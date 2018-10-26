@@ -1,6 +1,6 @@
 #include "common.h"
 Background::Background(){
-	
+	endScreen = false;
 	int width = 4014; //pixels
 	int height = 3981;
 	int n = 3;
@@ -77,7 +77,35 @@ Background::Background(){
 	uniform_texture = glGetUniformLocation(program, "u_Texture");
 	glBindVertexArray(0);
 	}
-	
+void Background::setEndscreen(){
+	if (endScreen)
+		return;
+	int width = 4014; //pixels
+	int height = 3981;
+	int n = 3;
+	stbi_set_flip_vertically_on_load(1);
+	if (rand()/(float)RAND_MAX <0.5)
+		localBuffer = stbi_load("endscreen.jpg", &width, &height, &n, 4);
+	else
+		localBuffer = stbi_load("endscreen2.jpg", &width, &height, &n, 4);
+	glBindBuffer( GL_ARRAY_BUFFER, buffer );
+	glBindVertexArray( vao );
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, localBuffer);
+	endScreen = true;
+	}
+void Background::unsetEndscreen(){
+	if (!endScreen)
+		return;
+	int width = 4014; //pixels
+	int height = 3981;
+	int n = 3;
+	stbi_set_flip_vertically_on_load(1);
+	localBuffer = stbi_load("nebula.jpg", &width, &height, &n, 4);
+	glBindBuffer( GL_ARRAY_BUFFER, buffer );
+	glBindVertexArray( vao );
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, localBuffer);
+	endScreen = false;
+	}
 void Background::draw(){
   glUseProgram( program );
   glBindVertexArray( vao );

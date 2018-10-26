@@ -5,14 +5,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include <tuple>
-mat2 rotatin(float angle){ //Returns a rotation matrix by a given angle. The angle is in radians.
-  mat2 toReturn(vec2(cos(angle),-sin(angle)),vec2(sin(angle), cos(angle)));
-  return toReturn;
-}
 
 Asteroid::Asteroid(){
   state.flashNumber=0;
-  state.cur_location = vec2(rand()/(float)RAND_MAX, rand()/(float)RAND_MAX);
+  state.cur_location = vec2(2*rand()/(float)RAND_MAX - 1.0, 2*rand()/(float)RAND_MAX - 1.0);
   float color_picker = rand()/(float)RAND_MAX;
   if (color_picker < 1/3.0)
 	state.color = vec3(1, 0, 0);
@@ -82,6 +78,9 @@ std::tuple<Asteroid*, Asteroid*> Asteroid::shatter(vec2 other_velocity, float ot
 		if(state.color.z==0)
 			colors = std::tuple<vec3,vec3>(vec3(1,0,0),vec3(0,1,0));
 		}
+	/*if (length(midline - state.velocity)< 0.01){ //fix so that when the asteroids just barely touch the ship, they'll be forced away.
+		midline = midline + 0.01*normalize(midline);
+		}*/
 	minus_asteroid = new Asteroid(std::get<0>(colors), rotation(-spread)*midline, state.cur_location+5*rotation(-spread)*midline);
 	plus_asteroid = new Asteroid(std::get<1>(colors), rotation(spread)*midline, state.cur_location+5*rotation(spread)*midline);
 	std::tuple<Asteroid*, Asteroid*> toReturn(minus_asteroid, plus_asteroid);
@@ -170,7 +169,8 @@ void Asteroid::draw(mat4 proj){
   
   //If you have a modelview matrix, pass it with proj
   glUniformMatrix4fv( GLvars.M_location, 1, GL_TRUE, proj );
-  glUniform4fv(GLvars.vcolor_location, 1, (1.0-state.flashNumber)*state.color + state.flashNumber*vec3(1.0,1.0,1.0));
+  vec4 color_with_alpha = vec4(state.color.x, state.color.y, state.color.z, 1);
+  glUniform4fv(GLvars.vcolor_location, 1, (1.0-state.flashNumber)*color_with_alpha + state.flashNumber*vec4(1.0,1.0,1.0,1.0));
   //Draw something
   glDrawArrays(GL_TRIANGLE_FAN, 0, 14);
   

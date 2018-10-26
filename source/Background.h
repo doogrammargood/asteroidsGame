@@ -20,11 +20,14 @@ class Background{
 	GLint vpos_location, vtex_location;   //reference to pos and texture coords in shaders
 	GLint uniform_color;
 	GLint uniform_texture;
+	bool endScreen;
 	unsigned char* localBuffer;
 	
 public:
 	
 	Background();
+	void setEndscreen();
+	void unsetEndscreen();
 	void draw();
 	};
 #endif

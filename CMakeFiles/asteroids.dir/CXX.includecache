@@ -50,6 +50,24 @@ common.h
 common.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
 
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.cpp
+common.h
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
+cmath
+-
+typeinfo
+-
+stdlib.h
+-
+time.h
+-
+tuple
+-
+
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.h
+common.h
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
+
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Ship.cpp
 common.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/common.h
@@ -99,6 +117,8 @@ utils/geometryhelpers.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/utils/geometryhelpers.h
 Background.h
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Background.h
+Explosion.h
+/home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/Explosion.h
 
 /home/owg/Documents/homework/Graphics/assignments/game_phase1/asteroids_template/source/main.cpp
 common.h
@@ -300,6 +320,10 @@ source/Bullet.h
 common.h
 source/common.h
 
+source/Explosion.h
+common.h
+source/common.h
+
 source/Ship.h
 common.h
 source/common.h
@@ -335,6 +359,8 @@ utils/geometryhelpers.h
 source/utils/geometryhelpers.h
 Background.h
 source/Background.h
+Explosion.h
+source/Explosion.h
 
 source/stb/stb_image.h
 stb_image.h

@@ -3,14 +3,16 @@
 #include <SFML/Audio.hpp>
 #include <algorithm>
 using namespace Angel;
-
+int MAX_ASTEROIDS_SIZE=100;
 Ship ship;
 //Asteroid asteroid;
 //Bullet bullet(vec2(0,0),vec2(0,0), vec2(0.0,1.0),vec3(1.0,0.0,0.0));
 std::vector<Bullet*> bullets;
 std::vector<Asteroid*> asteroids;
+std::vector<Explosion*> explosions;
 Bullet* bang;
 Asteroid* rock;
+Explosion* powt;
 sf::SoundBuffer lasers_a;
 sf::SoundBuffer lasers_e;
 sf::SoundBuffer lasers_g;
@@ -23,6 +25,9 @@ sf::SoundBuffer collideb;
 sf::SoundBuffer collidec;
 sf::SoundBuffer collideea;
 sf::SoundBuffer ea_chord;
+sf::SoundBuffer b_harm;
+sf::SoundBuffer e_harm;
+sf::SoundBuffer g_harm;
 
 sf::Sound noise_lasers_a;
 sf::Sound noise_lasers_e;
@@ -36,6 +41,9 @@ sf::Sound noise_collideb;
 sf::Sound noise_collidec;
 sf::Sound noise_collideea;
 sf::Sound noise_ea_chord;
+sf::Sound noise_b_harm;
+sf::Sound noise_e_harm;
+sf::Sound noise_g_harm;
 sf::Music music;
 
 static void error_callback(int error, const char* description)
@@ -45,9 +53,21 @@ static void error_callback(int error, const char* description)
 
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
+{	
+	
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
     glfwSetWindowShouldClose(window, GLFW_TRUE);
+  if (!ship.living()){
+	 if (key == GLFW_KEY_R && action == GLFW_PRESS){
+		   for (auto it = asteroids.begin() ; it != asteroids.end(); ++it)
+		{
+		delete (*it);
+		}	 
+		asteroids.clear();
+		ship.revive();
+	 }
+	return;
+		}
   if (key == GLFW_KEY_LEFT){
 	  if (action == GLFW_PRESS)
 		  ship.rotate_left();
@@ -110,6 +130,9 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 		noise_collidec.setVolume(60);
 		noise_collideea.setVolume(60);
 		noise_ea_chord.setVolume(60);
+		noise_b_harm.setVolume(100);
+		noise_e_harm.setVolume(100);
+		noise_g_harm.setVolume(100);
 	  }
 	  else{
 		noise_flippty.setVolume(0);
@@ -124,6 +147,9 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 		noise_collidec.setVolume(0);
 		noise_collideea.setVolume(0);
 		noise_ea_chord.setVolume(0);
+		noise_b_harm.setVolume(0);
+		noise_e_harm.setVolume(0);
+		noise_g_harm.setVolume(0);
 		  }
 	  
 	  }
@@ -144,10 +170,12 @@ void animate(){
     ship.update_state();
 	bool remove_roid = false;
 	bool hit = false; //set to true if a laser hit an asteroid.
+	bool ship_alive = true;
 	Bullet *to_remove = NULL;
 	std::tuple<Asteroid*,Asteroid*> shards;
 	std::vector<Asteroid*> newAsteroids;
 	vec3 temp_color;
+	vec3 roid_color;
 	vec2 *left_laser_boundary;
 	vec2 *right_laser_boundary;
 	vec2 *asteroid_boundary;
@@ -159,18 +187,27 @@ void animate(){
 		numVerts = 23;
 	for (auto it = bullets.begin(); it != bullets.end();){ // check if any bullets have reach their end of life
 		//https://stackoverflow.com/questions/9927163/erase-element-in-vector-while-iterating-the-same-vector
-		if(!(*it)->update_state())
+		if(!(*it)->update_state()){
 		  bullets.erase(it);
+		}
 		else
 		  ++it;
 	}
+	for (auto it = explosions.begin(); it != explosions.end();){
+		if(!(*it)->update_state()){
+			explosions.erase(it);
+		}
+		else
+		  ++it;
+		}
 	ship_boundary = ship.getBoundary();
 	for (auto it = asteroids.begin(); it != asteroids.end();){
 		remove_roid = false;
 		(*it)->update_state();
-		if (length((*it)->locate() - ship.locate())<1 and polygonsIntersect((*it)->getBoundary(),ship_boundary,13,numVerts)){ //Check to see if the ship hit an asteroid.
+		if (ship.living() and length((*it)->locate() - ship.locate())<1 and polygonsIntersect((*it)->getBoundary(),ship_boundary,13,numVerts)){ //Check to see if the ship hit an asteroid.
+			roid_color = (*it)->get_color();
 			shards=(*it)->shatter(ship.velocity(), ship.get_mass());
-			ship.get_hit((*it)->get_velocity(),(*it)->get_mass());
+			ship_alive = ship.get_hit((*it)->get_velocity(),(*it)->get_mass(), (*it)->get_color());
 			remove_roid = true;
 			if (length((*it)->get_color()) < 1.2){
 				if ((*it)->get_color().x == 1)
@@ -209,6 +246,7 @@ void animate(){
 					temp_color = (*las)->get_color() + (*it)->get_color();
 					temp_color = vec3(std::min(1,(int)temp_color.x), std::min(1,(int)temp_color.y), std::min(1,(int)temp_color.z));
 					if(length(temp_color - (*it)->get_color())>0.1){//If it has changed colors..
+						roid_color = (*it)->get_color();
 						(*it)->set_color(temp_color);
 						if(length(temp_color - vec3(1,1,1))<0.01){
 							remove_roid = true;
@@ -228,19 +266,48 @@ void animate(){
 				}
 
 			}
-			if ((*las)->is_gone())
+			if ((*las)->is_gone()){
 				bullets.erase(las);
+			}
 			else
 				++las;
 		}
-		if(remove_roid)
+		if(remove_roid){
+			powt = new Explosion((*it)->locate(),roid_color);
+			powt->gl_init();
+			explosions.push_back(powt);
 			asteroids.erase(it);
+		}
 		else
 			++it;
 	}
+	if (!ship_alive){
+		//powt = new Explosion(ship.locate(),vec3(0.25,0.5,1));
+		powt = new Explosion(ship.locate(),vec3(1,1,1));
+		powt->gl_init();
+		explosions.push_back(powt);
+		temp_color = ship.sheild_color();
+		if (length(temp_color) < 1.1){
+			if (temp_color.x >0)
+				noise_b_harm.play();
+			else if (temp_color.y>0)
+				noise_e_harm.play();
+			else if (temp_color.z>0)
+				noise_g_harm.play();
+			}
+		else{
+			if (temp_color.x < 1)
+				noise_b_harm.play();
+			else if (temp_color.y<1)
+				noise_e_harm.play();
+			else if (temp_color.z<1)
+				noise_g_harm.play();
+			}
+		
+		}
 	delete[] ship_boundary;
 	for(auto ast = newAsteroids.begin(); ast != newAsteroids.end();){
-		if(asteroids.size()<10){
+		if(asteroids.size()<MAX_ASTEROIDS_SIZE){
 			(*ast)->gl_init();
 			asteroids.push_back(*ast);
 		}
@@ -276,7 +343,13 @@ if (!collideea.loadFromFile("sounds/bouncy_g9_session.wav") )
   std::cout<<"can't load g9 chord."<<std::endl;
 if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
   std::cout<<"can't load ea chord."<<std::endl;
-
+if (!b_harm.loadFromFile("sounds/b_harm_session.wav"))
+  std::cout<<"can't load b harm"<<std::endl;
+if (!e_harm.loadFromFile("sounds/e_harm_session.wav"))
+  std::cout<<"can't load e harm"<<std::endl;
+if (!g_harm.loadFromFile("sounds/g_harm_session.wav"))
+  std::cout<<"can't load g harm"<<std::endl;
+  
   noise_lasers_a.setBuffer(lasers_a);
   noise_lasers_e.setBuffer(lasers_e);
   noise_lasers_g.setBuffer(lasers_g);
@@ -289,7 +362,11 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
   noise_collidec.setBuffer(collidec);
   noise_collideea.setBuffer(collideea); 
   noise_ea_chord.setBuffer(ea_chord);
-  /*
+  noise_b_harm.setBuffer(b_harm);
+  noise_e_harm.setBuffer(e_harm);
+  noise_g_harm.setBuffer(g_harm);
+  
+  
   noise_flippty.setVolume(100);
   noise_lasers_a.setVolume(40);
   noise_lasers_e.setVolume(20);
@@ -302,8 +379,11 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
   noise_collidec.setVolume(60);
   noise_collideea.setVolume(60);
   noise_ea_chord.setVolume(60);
-   */
-  noise_flippty.setVolume(0);
+  noise_b_harm.setVolume(100);
+  noise_e_harm.setVolume(100);
+  noise_g_harm.setVolume(100);
+
+  /*noise_flippty.setVolume(0);
   noise_lasers_a.setVolume(0);
   noise_lasers_e.setVolume(0);
   noise_lasers_g.setVolume(0);
@@ -314,12 +394,12 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
   noise_collideb.setVolume(0);
   noise_collidec.setVolume(0);
   noise_collideea.setVolume(0);
-  noise_ea_chord.setVolume(0);
+  noise_ea_chord.setVolume(0);*/
   if (!music.openFromFile("sounds/game_music_session.ogg"))
 	std::cout<<"can't find music."<<std::endl;
 	//return -1; // error
-  //music.setVolume(90);
-  music.setVolume(0);
+  music.setVolume(90);
+  //music.setVolume(0);
   music.play();
   srand (time(NULL));
   GLFWwindow* window;
@@ -350,7 +430,7 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
   init();
   Background background;
   while (!glfwWindowShouldClose(window)){
-	if(rand()/(float)RAND_MAX<0.01 and asteroids.size()<5){
+	if(rand()/(float)RAND_MAX<0.1/(10*(float)asteroids.size() +1.0)and asteroids.size()<MAX_ASTEROIDS_SIZE){
 		rock = new Asteroid();
 		rock->gl_init();
 		asteroids.push_back(rock);
@@ -365,6 +445,10 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
     proj = Ortho2D(-1.0, 1.0, 1.0, -1.0);
     
     animate();
+	if (!ship.living())
+		background.setEndscreen();
+	else
+		background.unsetEndscreen();
     
     glClear(GL_COLOR_BUFFER_BIT);
 	
@@ -374,6 +458,8 @@ if (!ea_chord.loadFromFile("sounds/ea_chord_session.wav") )
 	for (auto it = bullets.begin(); it != bullets.end(); ++it)
 		(*it)->draw(proj);
 	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
+		(*it)->draw(proj);
+	for (auto it = explosions.begin(); it != explosions.end(); ++it)
 		(*it)->draw(proj);
     
     glfwSwapBuffers(window);

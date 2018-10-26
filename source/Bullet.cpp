@@ -123,7 +123,7 @@ void Bullet::draw(mat4 proj){
   proj = proj*Translate(state.position.x,state.position.y,0)*Scale(0.15,0.15,0.15)*RotateZ(-360/(2*3.141592654)*state.angle);
   //If you have a modelview matrix, pass it with proj
   glUniformMatrix4fv( GLvars.M_location, 1, GL_TRUE, proj );
-  glUniform4fv(GLvars.vcolor_location, 1, state.color);
+  glUniform4fv(GLvars.vcolor_location, 1, vec4(state.color.x, state.color.y, state.color.z, 1));
   glUseProgram( GLvars.program );
   if (state.right_laser){
     glBindVertexArray(GLvars.vao_right);//draw the right bullet
